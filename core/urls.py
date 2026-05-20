@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -10,9 +10,8 @@ urlpatterns = [
 
     path('api/', include('api.urls')),
 
-    path('', frontend),
-
-    path('<path:path>', frontend),
+    # React frontend catch-all
+    re_path(r'^(?!admin/?$|admin/|api/).*$' , frontend),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
