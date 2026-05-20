@@ -18,8 +18,12 @@ urlpatterns = [
     # API Routes
     path('api/', include('api.urls')),
 
+    # Frontend Homepage
+    path('', frontend, name='frontend'),
+
     # React Frontend Catch-All
-    re_path(r'^.*$', frontend),
+    # IMPORTANT: keep this LAST
+    re_path(r'^(?!admin/|api/).*$', frontend),
 ]
 
 # Media Files
