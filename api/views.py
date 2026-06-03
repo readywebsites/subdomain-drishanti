@@ -68,7 +68,8 @@ def get_products(request):
     if search:
         products = products.filter(
             Q(name__icontains=search) | 
-            Q(description__icontains=search)
+            Q(description__icontains=search) |
+            Q(style_number__icontains=search)
         )
 
     serializer = ProductSerializer(products, many=True)

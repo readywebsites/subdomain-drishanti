@@ -56,9 +56,31 @@ class Product(models.Model):
     type = models.CharField(max_length=50, choices=TYPE_CHOICES)
     category = models.CharField(max_length=50, choices=CATEGORY_CHOICES)
 
-    image = models.ImageField(upload_to='products/')
-    gallery_images = models.JSONField(default=list, blank=True, help_text="List of additional product image URLs")
+    image = models.ImageField(upload_to='products/', help_text="Hero Image (Main Image)")
+    detail_image_1 = models.ImageField(upload_to='products/', null=True, blank=True)
+    detail_image_2 = models.ImageField(upload_to='products/', null=True, blank=True)
+    detail_image_3 = models.ImageField(upload_to='products/', null=True, blank=True)
+    detail_image_4 = models.ImageField(upload_to='products/', null=True, blank=True)
+    detail_image_5 = models.ImageField(upload_to='products/', null=True, blank=True)
+    detail_image_6 = models.ImageField(upload_to='products/', null=True, blank=True)
+    detail_image_7 = models.ImageField(upload_to='products/', null=True, blank=True)
+    detail_image_8 = models.ImageField(upload_to='products/', null=True, blank=True)
+    detail_image_9 = models.ImageField(upload_to='products/', null=True, blank=True)
+    video = models.FileField(upload_to='products/videos/', null=True, blank=True)
+
+    gallery_images = models.JSONField(default=list, blank=True, help_text="List of additional product image URLs (Legacy)")
     description = models.TextField(blank=True)
+    
+    # New fields for product details
+    care_instructions = models.TextField(blank=True, null=True)
+    activation_guidance = models.TextField(blank=True, null=True)
+    product_details = models.TextField(blank=True, null=True)
+    silver_weight = models.CharField(max_length=100, blank=True, null=True)
+    chain_length = models.CharField(max_length=100, blank=True, null=True)
+    size_chart = models.TextField(blank=True, null=True)
+    style_number = models.CharField(max_length=100, blank=True, null=True)
+    bracelet_size = models.CharField(max_length=100, blank=True, null=True)
+    standard_chain_sizes = models.CharField(max_length=255, blank=True, null=True)
 
     stock = models.IntegerField(default=10)
     is_bestseller = models.BooleanField(default=False)

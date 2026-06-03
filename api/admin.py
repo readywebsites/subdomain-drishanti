@@ -18,8 +18,36 @@ class SubCategoryAdmin(admin.ModelAdmin):
 # 🔥 PRODUCT ADMIN (IMAGE + FILTER + BESTSELLER)
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'price')
-    search_fields = ('name',)
+    list_display = ('id', 'name', 'price', 'style_number', 'silver_weight', 'stock', 'is_active')
+    list_editable = ('price', 'stock', 'is_active')
+    search_fields = ('name', 'style_number')
+    list_filter = ('material', 'category', 'is_active', 'is_bestseller', 'is_featured')
+    prepopulated_fields = {'slug': ('name',)}
+    
+    fieldsets = (
+        ('Basic Information', {
+            'fields': ('name', 'slug', 'new_category', 'subcategory', 'category', 'price', 'discount_price', 'stock')
+        }),
+        ('Product Media', {
+            'fields': (
+                'image', 
+                'detail_image_1', 'detail_image_2', 'detail_image_3', 
+                'detail_image_4', 'detail_image_5', 'detail_image_6', 
+                'detail_image_7', 'detail_image_8', 'detail_image_9',
+                'video',
+                'gallery_images'
+            )
+        }),
+        ('Product Specifications', {
+            'fields': ('material', 'type', 'style_number', 'silver_weight', 'chain_length', 'bracelet_size', 'standard_chain_sizes')
+        }),
+        ('Descriptions & Guidance', {
+            'fields': ('description', 'product_details', 'care_instructions', 'activation_guidance', 'size_chart')
+        }),
+        ('Status & Visibility', {
+            'fields': ('is_bestseller', 'is_featured', 'is_active')
+        }),
+    )
 
 
 # 🔥 ORDER ITEM INLINE (ORDER DETAIL MA PRODUCT SHOW)
