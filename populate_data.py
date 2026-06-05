@@ -48,8 +48,8 @@ def create_sample_data():
                 'is_bestseller': True,
                 'is_featured': True,
                 'is_active': True,
-                'image': 'products/sample.jpg',  # This will need to be uploaded via admin
-                'gallery_images': ['products/gallery1.jpg', 'products/gallery2.jpg']
+                'image': 'products/sample.webp',  # This will need to be uploaded via admin
+                'gallery_images': ['products/gallery1.webp', 'products/gallery2.webp']
             }
         )
 
