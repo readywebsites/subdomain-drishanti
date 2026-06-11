@@ -229,7 +229,7 @@ Reimagined.`,description:"GOLD | SILVER | DIAMONDS",primaryCTA:{text:"What is Ra
         /* TIER 1 & 2: Mobile Screens (Up to 767px) */
         @media (max-width: 767px) {
           .components-container { transform: none !important; padding-top: 1rem !important; padding-bottom: 3.5rem !important; }
-          .components-header { margin-bottom: 0.75rem !important; }
+          .components-header { margin-bottom: 0.75rem !important; margin-top: -10px !important; }
           .components-header p { font-size: 9px !important; margin-bottom: 0.2rem !important; letter-spacing: 0.15em !important; }
           .components-header h2 { font-size: 22px !important; line-height: 1.2 !important; }
           .components-header .divider-icons { margin-top: 0.4rem !important; transform: scale(0.7); }
@@ -371,11 +371,11 @@ Reimagined.`,description:"GOLD | SILVER | DIAMONDS",primaryCTA:{text:"What is Ra
           }
           
           .occasion-wrapper { width: 100% !important; flex-shrink: 1 !important; }
-          .occasion-card { padding: 0.6rem 0.4rem !important; border-radius: 12px !important; aspect-ratio: 1/1.1 !important; }
-          .occasion-icon-container { height: 1.8rem !important; margin-bottom: 0.25rem !important; }
-          .occasion-icon { width: 1.4rem !important; height: 1.4rem !important; }
-          .occasion-title-container { height: 2rem !important; }
-          .occasion-title { font-size: 8.5px !important; line-height: 1.15 !important; font-weight: 500 !important; }
+          .occasion-card { padding: 0.8rem 0.4rem !important; border-radius: 12px !important; aspect-ratio: 1/1.1 !important; }
+          .occasion-icon-container { height: 2.0rem !important; margin-bottom: 0.25rem !important; }
+          .occasion-icon { width: 1.5rem !important; height: 1.5rem !important; }
+          .occasion-title-container { height: 2.2rem !important; }
+          .occasion-title { font-size: 9px !important; line-height: 1.15 !important; font-weight: 500 !important; }
         }
 
         /* Extreme Small Screen Optimization */
