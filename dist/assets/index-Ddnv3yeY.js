@@ -241,17 +241,20 @@ Reimagined.`,description:"GOLD | SILVER | DIAMONDS",primaryCTA:{text:"What is Ra
           }
           
           .component-card { 
-            padding: 0.75rem 0.5rem !important; 
+            padding: 1.25rem 0.5rem !important; 
             border-radius: 12px !important;
             flex-direction: column !important;
             align-items: center !important;
             text-align: center !important;
+            min-height: 160px !important;
+            display: flex !important;
+            justify-content: center !important;
           }
           
           .component-card-content {
             flex-direction: column !important;
             align-items: center !important;
-            gap: 0.25rem !important;
+            gap: 0.35rem !important;
           }
           
           .component-text-content {
@@ -262,23 +265,23 @@ Reimagined.`,description:"GOLD | SILVER | DIAMONDS",primaryCTA:{text:"What is Ra
           }
           
           .component-id-icon-row {
-            margin-bottom: 0.3rem !important;
-            gap: 0.3rem !important;
+            margin-bottom: 0.4rem !important;
+            gap: 0.35rem !important;
           }
           
           .component-id-icon-row span { font-size: 10px !important; }
-          .component-id-icon-row .icon-container { width: 1.2rem !important; height: 1.2rem !important; }
-          .component-id-icon-row .icon-container svg { width: 10px !important; height: 10px !important; }
+          .component-id-icon-row .icon-container { width: 1.3rem !important; height: 1.3rem !important; }
+          .component-id-icon-row .icon-container svg { width: 11px !important; height: 11px !important; }
           
           .component-title { 
-            font-size: 12px !important; 
-            margin-bottom: 0.15rem !important;
-            line-height: 1.1 !important;
+            font-size: 13px !important; 
+            margin-bottom: 0.2rem !important;
+            line-height: 1.2 !important;
             font-weight: 600 !important;
           }
           
           .component-desc { 
-            font-size: 9px !important; 
+            font-size: 9.5px !important; 
             line-height: 1.2 !important;
             -webkit-line-clamp: 2 !important;
             display: -webkit-box !important;
@@ -288,10 +291,10 @@ Reimagined.`,description:"GOLD | SILVER | DIAMONDS",primaryCTA:{text:"What is Ra
           }
           
           .component-thumb { 
-            min-width: 50px !important; 
-            height: 50px !important; 
+            min-width: 58px !important; 
+            height: 58px !important; 
             order: -1 !important;
-            margin-bottom: 0.3rem !important;
+            margin-bottom: 0.4rem !important;
           }
         }
 
@@ -362,17 +365,17 @@ Reimagined.`,description:"GOLD | SILVER | DIAMONDS",primaryCTA:{text:"What is Ra
           .occasions-grid { 
             display: grid !important;
             grid-template-columns: repeat(4, 1fr) !important;
-            gap: 0.4rem !important; 
-            padding: 0 0.5rem !important;
+            gap: 0.6rem !important; 
+            padding: 0 0.75rem !important;
             max-width: 100% !important;
           }
           
           .occasion-wrapper { width: 100% !important; flex-shrink: 1 !important; }
-          .occasion-card { padding: 0.4rem !important; border-radius: 10px !important; }
-          .occasion-icon-container { height: 1.6rem !important; margin-bottom: 0.2rem !important; }
-          .occasion-icon { width: 1.2rem !important; height: 1.2rem !important; }
-          .occasion-title-container { height: 1.8rem !important; }
-          .occasion-title { font-size: 8px !important; line-height: 1.1 !important; font-weight: 500 !important; }
+          .occasion-card { padding: 0.6rem 0.4rem !important; border-radius: 12px !important; aspect-ratio: 1/1.1 !important; }
+          .occasion-icon-container { height: 1.8rem !important; margin-bottom: 0.25rem !important; }
+          .occasion-icon { width: 1.4rem !important; height: 1.4rem !important; }
+          .occasion-title-container { height: 2rem !important; }
+          .occasion-title { font-size: 8.5px !important; line-height: 1.15 !important; font-weight: 500 !important; }
         }
 
         /* Extreme Small Screen Optimization */
