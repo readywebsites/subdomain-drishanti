@@ -228,21 +228,21 @@ Reimagined.`,description:"GOLD | SILVER | DIAMONDS",primaryCTA:{text:"What is Ra
                     `,children:[s.jsx("span",{children:t.button}),s.jsx("span",{className:"ml-2 2xl:ml-3 flex items-center justify-center w-4 h-4 2xl:w-6 2xl:h-6 rounded-full border border-white/50 text-[10px] 2xl:text-[14px] group-hover:bg-white group-hover:text-black transition-all",children:"→"})]})})]})})]},n))})]})};var pb={xmlns:"http://www.w3.org/2000/svg",width:24,height:24,viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:2,strokeLinecap:"round",strokeLinejoin:"round"};const mb=e=>e.replace(/([a-z0-9])([A-Z])/g,"$1-$2").toLowerCase(),hb=(e,t)=>{const n=y.forwardRef(({color:r="currentColor",size:i=24,strokeWidth:a=2,absoluteStrokeWidth:o,children:l,...c},u)=>y.createElement("svg",{ref:u,...pb,width:i,height:i,stroke:r,strokeWidth:o?Number(a)*24/Number(i):a,className:`lucide lucide-${mb(e)}`,...c},[...t.map(([d,p])=>y.createElement(d,p)),...(Array.isArray(l)?l:[l])||[]]));return n.displayName=`${e}`,n};var I=hb;const be=I("ArrowRight",[["path",{d:"M5 12h14",key:"1ays0h"}],["path",{d:"m12 5 7 7-7 7",key:"xquz4c"}]]),fb=I("Award",[["circle",{cx:"12",cy:"8",r:"6",key:"1vp47v"}],["path",{d:"M15.477 12.89 17 22l-5-3-5 3 1.523-9.11",key:"em7aur"}]]),xb=I("Baby",[["path",{d:"M9 12h.01",key:"157uk2"}],["path",{d:"M15 12h.01",key:"1k8ypt"}],["path",{d:"M10 16c.5.3 1.2.5 2 .5s1.5-.2 2-.5",key:"1u7htd"}],["path",{d:"M19 6.3a9 9 0 0 1 1.8 3.9 2 2 0 0 1 0 3.6 9 9 0 0 1-17.6 0 2 2 0 0 1 0-3.6A9 9 0 0 1 12 3c2 0 3.5 1.1 3.5 2.5s-.9 2.5-2 2.5c-.8 0-1.5-.4-1.5-1",key:"5yv0yz"}]]),gb=I("BadgeCheck",[["path",{d:"M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z",key:"3c2336"}],["path",{d:"m9 12 2 2 4-4",key:"dzmm74"}]]),yb=I("Banknote",[["rect",{width:"20",height:"12",x:"2",y:"6",rx:"2",key:"9lu3g6"}],["circle",{cx:"12",cy:"12",r:"2",key:"1c9p78"}],["path",{d:"M6 12h.01M18 12h.01",key:"113zkx"}]]),Wp=I("Calendar",[["rect",{width:"18",height:"18",x:"3",y:"4",rx:"2",ry:"2",key:"eu3xkr"}],["line",{x1:"16",x2:"16",y1:"2",y2:"6",key:"m3sa8f"}],["line",{x1:"8",x2:"8",y1:"2",y2:"6",key:"18kwsl"}],["line",{x1:"3",x2:"21",y1:"10",y2:"10",key:"xt86sb"}]]),vb=I("CheckCircle",[["path",{d:"M22 11.08V12a10 10 0 1 1-5.93-9.14",key:"g774vq"}],["polyline",{points:"22 4 12 14.01 9 11.01",key:"6xbx8j"}]]),nu=I("ChevronDown",[["path",{d:"m6 9 6 6 6-6",key:"qrunsl"}]]),ru=I("ChevronLeft",[["path",{d:"m15 18-6-6 6-6",key:"1wnfg3"}]]),wb=I("ChevronRight",[["path",{d:"m9 18 6-6-6-6",key:"mthhwq"}]]),jb=I("Church",[["path",{d:"m18 7 4 2v11a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9l4-2",key:"gy5gyo"}],["path",{d:"M14 22v-4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v4",key:"cpkuc4"}],["path",{d:"M18 22V5l-6-3-6 3v17",key:"1hsnhq"}],["path",{d:"M12 7v5",key:"ma6bk"}],["path",{d:"M10 9h4",key:"u4k05v"}]]),bb=I("CircleEllipsis",[["circle",{cx:"12",cy:"12",r:"10",key:"1mglay"}],["path",{d:"M17 12h.01",key:"1m0b6t"}],["path",{d:"M12 12h.01",key:"1mp3jc"}],["path",{d:"M7 12h.01",key:"eqddd0"}]]),Nb=I("Clock",[["circle",{cx:"12",cy:"12",r:"10",key:"1mglay"}],["polyline",{points:"12 6 12 12 16 14",key:"68esgv"}]]),kb=I("CreditCard",[["rect",{width:"20",height:"14",x:"2",y:"5",rx:"2",key:"ynyp8z"}],["line",{x1:"2",x2:"22",y1:"10",y2:"10",key:"1b3vmo"}]]),Sb=I("Crown",[["path",{d:"m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14",key:"zkxr6b"}]]),Cb=I("Facebook",[["path",{d:"M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z",key:"1jg4f8"}]]),Tb=I("Fingerprint",[["path",{d:"M2 12C2 6.5 6.5 2 12 2a10 10 0 0 1 8 4",key:"1jc9o5"}],["path",{d:"M5 19.5C5.5 18 6 15 6 12c0-.7.12-1.37.34-2",key:"1mxgy1"}],["path",{d:"M17.29 21.02c.12-.6.43-2.3.5-3.02",key:"ptglia"}],["path",{d:"M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4",key:"1nerag"}],["path",{d:"M8.65 22c.21-.66.45-1.32.57-2",key:"13wd9y"}],["path",{d:"M14 13.12c0 2.38 0 6.38-1 8.88",key:"o46ks0"}],["path",{d:"M2 16h.01",key:"1gqxmh"}],["path",{d:"M21.8 16c.2-2 .131-5.354 0-6",key:"drycrb"}],["path",{d:"M9 6.8a6 6 0 0 1 9 5.2c0 .47 0 1.17-.02 2",key:"1fgabc"}]]),Pb=I("Flame",[["path",{d:"M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z",key:"96xj49"}]]),Eb=I("Flower2",[["path",{d:"M12 5a3 3 0 1 1 3 3m-3-3a3 3 0 1 0-3 3m3-3v1M9 8a3 3 0 1 0 3 3M9 8h1m5 0a3 3 0 1 1-3 3m3-3h-1m-2 3v-1",key:"3pnvol"}],["circle",{cx:"12",cy:"8",r:"2",key:"1822b1"}],["path",{d:"M12 10v12",key:"6ubwww"}],["path",{d:"M12 22c4.2 0 7-1.667 7-5-4.2 0-7 1.667-7 5Z",key:"9hd38g"}],["path",{d:"M12 22c-4.2 0-7-1.667-7-5 4.2 0 7 1.667 7 5Z",key:"ufn41s"}]]),Ab=I("Gem",[["path",{d:"M6 3h12l4 6-10 13L2 9Z",key:"1pcd5k"}],["path",{d:"M11 3 8 9l4 13 4-13-3-6",key:"1fcu3u"}],["path",{d:"M2 9h20",key:"16fsjt"}]]),Rb=I("Gift",[["polyline",{points:"20 12 20 22 4 22 4 12",key:"nda8fc"}],["rect",{width:"20",height:"5",x:"2",y:"7",key:"wkgdzj"}],["line",{x1:"12",x2:"12",y1:"22",y2:"7",key:"1n8zgp"}],["path",{d:"M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z",key:"zighg4"}],["path",{d:"M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z",key:"1pa5tk"}]]),Mb=I("Hammer",[["path",{d:"m15 12-8.5 8.5c-.83.83-2.17.83-3 0 0 0 0 0 0 0a2.12 2.12 0 0 1 0-3L12 9",key:"1afvon"}],["path",{d:"M17.64 15 22 10.64",key:"zsji6s"}],["path",{d:"m20.91 11.7-1.25-1.25c-.6-.6-.93-1.4-.93-2.25v-.86L16.01 4.6a5.56 5.56 0 0 0-3.94-1.64H9l.92.82A6.18 6.18 0 0 1 12 8.4v1.56l2 2h2.47l2.26 1.91",key:"lehyy1"}]]),kt=I("Heart",[["path",{d:"M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z",key:"c3ymky"}]]),_b=I("Hexagon",[["path",{d:"M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z",key:"yt0hxn"}]]),Db=I("Home",[["path",{d:"m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z",key:"y5dka4"}],["polyline",{points:"9 22 9 12 15 12 15 22",key:"e2us08"}]]),Lb=I("Instagram",[["rect",{width:"20",height:"20",x:"2",y:"2",rx:"5",ry:"5",key:"2e1cvw"}],["path",{d:"M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z",key:"9exkf1"}],["line",{x1:"17.5",x2:"17.51",y1:"6.5",y2:"6.5",key:"r4j83e"}]]),bt=I("Loader2",[["path",{d:"M21 12a9 9 0 1 1-6.219-8.56",key:"13zald"}]]),Xx=I("Mail",[["rect",{width:"20",height:"16",x:"2",y:"4",rx:"2",key:"18n3k1"}],["path",{d:"m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7",key:"1ocrg3"}]]),iu=I("MapPin",[["path",{d:"M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z",key:"2oe9fu"}],["circle",{cx:"12",cy:"10",r:"3",key:"ilqhr7"}]]),zb=I("Menu",[["line",{x1:"4",x2:"20",y1:"12",y2:"12",key:"1e0a9i"}],["line",{x1:"4",x2:"20",y1:"6",y2:"6",key:"1owob3"}],["line",{x1:"4",x2:"20",y1:"18",y2:"18",key:"yk5zj1"}]]),ki=I("MessageCircle",[["path",{d:"m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z",key:"v2veuj"}]]),su=I("Minus",[["path",{d:"M5 12h14",key:"1ays0h"}]]),Ib=I("Moon",[["path",{d:"M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z",key:"a7tn18"}]]),Yx=I("Package",[["path",{d:"M16.5 9.4 7.55 4.24",key:"10qotr"}],["path",{d:"M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z",key:"yt0hxn"}],["polyline",{points:"3.29 7 12 12 20.71 7",key:"ousv84"}],["line",{x1:"12",x2:"12",y1:"22",y2:"12",key:"a4e8g8"}]]),Qx=I("Phone",[["path",{d:"M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z",key:"foiqr5"}]]),au=I("Plus",[["path",{d:"M5 12h14",key:"1ays0h"}],["path",{d:"M12 5v14",key:"s699le"}]]),Hp=I("Quote",[["path",{d:"M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z",key:"4rm80e"}],["path",{d:"M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z",key:"10za9r"}]]),ou=I("RefreshCw",[["path",{d:"M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8",key:"v9h5vc"}],["path",{d:"M21 3v5h-5",key:"1q7to0"}],["path",{d:"M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16",key:"3uifl3"}],["path",{d:"M8 16H3v5",key:"1cv678"}]]),Ii=I("Search",[["circle",{cx:"11",cy:"11",r:"8",key:"4ej97u"}],["path",{d:"m21 21-4.3-4.3",key:"1qie3q"}]]),Si=I("ShieldCheck",[["path",{d:"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z",key:"3xmgem"}],["path",{d:"m9 12 2 2 4-4",key:"dzmm74"}]]),qp=I("Shield",[["path",{d:"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z",key:"3xmgem"}]]),cn=I("ShoppingBag",[["path",{d:"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z",key:"hou9p0"}],["path",{d:"M3 6h18",key:"d0wm0j"}],["path",{d:"M16 10a4 4 0 0 1-8 0",key:"1ltviw"}]]),or=I("Sparkles",[["path",{d:"m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z",key:"17u4zn"}],["path",{d:"M5 3v4",key:"bklmnn"}],["path",{d:"M19 17v4",key:"iiml17"}],["path",{d:"M3 5h4",key:"nem4j1"}],["path",{d:"M17 19h4",key:"lbex7p"}]]),Gp=I("Star",[["polygon",{points:"12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2",key:"8f66p6"}]]),Zx=I("Sun",[["circle",{cx:"12",cy:"12",r:"4",key:"4exip2"}],["path",{d:"M12 2v2",key:"tus03m"}],["path",{d:"M12 20v2",key:"1lh1kg"}],["path",{d:"m4.93 4.93 1.41 1.41",key:"149t6j"}],["path",{d:"m17.66 17.66 1.41 1.41",key:"ptbguv"}],["path",{d:"M2 12h2",key:"1t8f8n"}],["path",{d:"M20 12h2",key:"1q8mjw"}],["path",{d:"m6.34 17.66-1.41 1.41",key:"1m8zz5"}],["path",{d:"m19.07 4.93-1.41 1.41",key:"1shlcs"}]]),Vb=I("Tag",[["path",{d:"M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z",key:"14b2ls"}],["path",{d:"M7 7h.01",key:"7u93v4"}]]),Jx=I("Truck",[["path",{d:"M10 17h4V5H2v12h3",key:"1jq12e"}],["path",{d:"M20 17h2v-3.34a4 4 0 0 0-1.17-2.83L19 9h-5",key:"1xb3ft"}],["path",{d:"M14 17h1",key:"nufu4t"}],["circle",{cx:"7.5",cy:"17.5",r:"2.5",key:"a7aife"}],["circle",{cx:"17.5",cy:"17.5",r:"2.5",key:"1mdrzq"}]]),Ob=I("Twitter",[["path",{d:"M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z",key:"pff0z6"}]]),Fb=I("Wind",[["path",{d:"M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2",key:"1k4u03"}],["path",{d:"M9.6 4.6A2 2 0 1 1 11 8H2",key:"b7d0fd"}],["path",{d:"M12.6 19.4A2 2 0 1 0 14 16H2",key:"1p5cb3"}]]),Bb=I("XCircle",[["circle",{cx:"12",cy:"12",r:"10",key:"1mglay"}],["path",{d:"m15 9-6 6",key:"1uzhvr"}],["path",{d:"m9 9 6 6",key:"z0biqf"}]]),Nt=I("X",[["path",{d:"M18 6 6 18",key:"1bl5f8"}],["path",{d:"m6 6 12 12",key:"d8bk6v"}]]),Ub=[{id:"01",image:"./images/Gold  Silver Structure.webp",icon:Ab,title:"Gold / Silver Structure",description:"Crafted in premium 18k gold plating or sterling silver for lasting purity."},{id:"02",image:"./images/vasakshep.webp",icon:or,title:"Encapsulated Vasakshep",description:"Sacred, consecrated Vedic powders safely housed inside every potli."},{id:"03",image:"./images/enamel.webp",icon:Si,title:"German Ceramic",description:"High-durability ceramic coating preserving the sacred hue."},{id:"04",image:"./images/certificate.webp",icon:gb,title:"Authentication Certificate",description:"Every piece includes an official hallmark authenticity certificate."},{id:"05",image:"./images/stamping.webp",icon:Tb,title:"Brand Stamping",description:"The DRISHANTI hallmark engraved as a vow of craftsmanship."},{id:"06",image:"./images/comfort-fit.webp",icon:bb,title:"Comfort Fit Construction",description:"Designed ergonomically for a seamless second-skin wearing feel."}],$b=()=>s.jsxs("section",{className:"components-section relative h-full w-full bg-[#F7F2EA] flex flex-col justify-center overflow-hidden no-scrollbar py-2 md:py-8 lg:py-10 2xl:py-12",children:[s.jsx("style",{dangerouslySetInnerHTML:{__html:`
         /* TIER 1 & 2: Mobile Screens (Up to 767px) */
         @media (max-width: 767px) {
-          .components-container { transform: none !important; padding-top: 2rem !important; padding-bottom: 2rem !important; }
-          .components-header { margin-bottom: 1rem !important; }
-          .components-header p { font-size: 10px !important; margin-bottom: 0.25rem !important; }
-          .components-header h2 { font-size: 26px !important; }
-          .components-header .divider-icons { margin-top: 0.5rem !important; transform: scale(0.8); }
+          .components-container { transform: none !important; padding-top: 1rem !important; padding-bottom: 3.5rem !important; }
+          .components-header { margin-bottom: 0.75rem !important; }
+          .components-header p { font-size: 9px !important; margin-bottom: 0.2rem !important; letter-spacing: 0.15em !important; }
+          .components-header h2 { font-size: 22px !important; line-height: 1.2 !important; }
+          .components-header .divider-icons { margin-top: 0.4rem !important; transform: scale(0.7); }
           
           .components-grid { 
             grid-template-columns: repeat(2, minmax(0, 1fr)) !important; 
-            gap: 0.75rem !important; 
-            padding: 0 0.25rem 0.5rem 0.25rem !important;
+            gap: 0.5rem !important; 
+            padding: 0 0.5rem !important;
           }
           
           .component-card { 
-            padding: 1rem 0.75rem !important; 
-            border-radius: 16px !important;
+            padding: 0.75rem 0.5rem !important; 
+            border-radius: 12px !important;
             flex-direction: column !important;
             align-items: center !important;
             text-align: center !important;
@@ -251,56 +251,68 @@ Reimagined.`,description:"GOLD | SILVER | DIAMONDS",primaryCTA:{text:"What is Ra
           .component-card-content {
             flex-direction: column !important;
             align-items: center !important;
-            gap: 0.5rem !important;
+            gap: 0.25rem !important;
           }
           
           .component-text-content {
              display: flex !important;
              flex-direction: column !important;
              align-items: center !important;
+             width: 100% !important;
           }
           
           .component-id-icon-row {
-            margin-bottom: 0.5rem !important;
-            gap: 0.4rem !important;
+            margin-bottom: 0.3rem !important;
+            gap: 0.3rem !important;
           }
           
-          .component-id-icon-row span { font-size: 11px !important; }
-          .component-id-icon-row .icon-container { width: 1.4rem !important; height: 1.4rem !important; }
-          .component-id-icon-row .icon-container svg { width: 11px !important; height: 11px !important; }
+          .component-id-icon-row span { font-size: 10px !important; }
+          .component-id-icon-row .icon-container { width: 1.2rem !important; height: 1.2rem !important; }
+          .component-id-icon-row .icon-container svg { width: 10px !important; height: 10px !important; }
           
           .component-title { 
-            font-size: 14px !important; 
-            margin-bottom: 0.25rem !important;
-            line-height: 1.2 !important;
+            font-size: 12px !important; 
+            margin-bottom: 0.15rem !important;
+            line-height: 1.1 !important;
+            font-weight: 600 !important;
           }
           
           .component-desc { 
-            font-size: 10.5px !important; 
-            line-height: 1.3 !important;
-            -webkit-line-clamp: 3 !important;
+            font-size: 9px !important; 
+            line-height: 1.2 !important;
+            -webkit-line-clamp: 2 !important;
+            display: -webkit-box !important;
+            -webkit-box-orient: vertical !important;
+            overflow: hidden !important;
             max-width: 100% !important;
           }
           
           .component-thumb { 
-            min-width: 64px !important; 
-            height: 64px !important; 
+            min-width: 50px !important; 
+            height: 50px !important; 
             order: -1 !important;
-            margin-bottom: 0.5rem !important;
+            margin-bottom: 0.3rem !important;
           }
         }
 
-        /* Short Screen Optimization (Keep it slightly more compact) */
+        /* Extreme Small Screen Optimization */
+        @media (max-width: 360px) {
+          .components-header h2 { font-size: 18px !important; }
+          .component-title { font-size: 11px !important; }
+          .component-desc { display: none !important; }
+          .component-thumb { min-width: 45px !important; height: 45px !important; }
+        }
+
+        /* Short Screen Optimization */
         @media (max-height: 700px) and (max-width: 767px) {
-          .components-container { padding-top: 1rem !important; padding-bottom: 1rem !important; }
-          .components-header { margin-bottom: 0.5rem !important; }
-          .components-header h2 { font-size: 22px !important; }
+          .components-container { padding-top: 0.5rem !important; padding-bottom: 3rem !important; }
+          .components-header { margin-bottom: 0.25rem !important; }
+          .components-header h2 { font-size: 20px !important; }
           .components-header .divider-icons { display: none !important; }
-          .components-grid { gap: 0.5rem !important; }
-          .component-card { padding: 0.75rem 0.5rem !important; }
-          .component-title { font-size: 12px !important; }
-          .component-desc { font-size: 9.5px !important; }
-          .component-thumb { min-width: 54px !important; height: 54px !important; }
+          .components-grid { gap: 0.4rem !important; }
+          .component-card { padding: 0.5rem 0.4rem !important; }
+          .component-title { font-size: 11px !important; }
+          .component-thumb { min-width: 48px !important; height: 48px !important; }
         }
 
         /* TIER 3: Tab (768px - 1023px) */
@@ -341,43 +353,48 @@ Reimagined.`,description:"GOLD | SILVER | DIAMONDS",primaryCTA:{text:"What is Ra
       `}}),s.jsx("div",{className:"absolute inset-0 opacity-[0.03] pointer-events-none",children:s.jsxs("svg",{className:"w-full h-full",xmlns:"http://www.w3.org/2000/svg",children:[s.jsx("defs",{children:s.jsx("pattern",{id:"grid",width:"80",height:"80",patternUnits:"userSpaceOnUse",children:s.jsx("path",{d:"M 80 0 L 0 0 0 80",fill:"none",stroke:"#AF9B7D",strokeWidth:"1"})})}),s.jsx("rect",{width:"100%",height:"100%",fill:"url(#grid)"})]})}),s.jsxs("div",{className:"components-container w-full max-w-[1400px] 2xl:max-w-[1600px] mx-auto px-4 lg:px-12 h-full flex flex-col relative z-10 pt-2 md:pt-0 md:-translate-y-3 lg:-translate-y-5",children:[s.jsxs("div",{className:"components-header text-center mb-5 md:mb-6 lg:mb-8 2xl:mb-10 shrink-0",children:[s.jsx(A.p,{initial:{opacity:0,y:15},whileInView:{opacity:1,y:0},transition:{duration:.7},className:"uppercase tracking-[0.22em] sm:tracking-[0.32em] lg:tracking-[0.42em] text-[#B3966E] text-[10px] md:text-[10px] lg:text-[11px] 2xl:text-[14px] font-medium mb-1.5 md:mb-2",children:"THE ANATOMY OF SACRED CRAFT"}),s.jsxs(A.h2,{initial:{opacity:0,y:15},whileInView:{opacity:1,y:0},transition:{duration:.8},className:"font-serif text-[#1A1A1A] leading-[1.1] text-[24px] md:text-[34px] lg:text-[40px] 2xl:text-[48px]",children:["Components of"," ",s.jsx("span",{className:"italic text-[#B3966E]",children:"Rakshapotli"})]}),s.jsxs("div",{className:"divider-icons flex items-center justify-center gap-3 md:gap-4 mt-2.5 md:mt-3 2xl:mt-6",children:[s.jsx("div",{className:"w-12 md:w-16 2xl:w-24 h-[0.5px] bg-[#D5C2A5]"}),s.jsx("div",{className:"text-[#C0A57D] text-base md:text-lg 2xl:text-2xl",children:"✦"}),s.jsx("div",{className:"w-12 md:w-16 2xl:w-24 h-[0.5px] bg-[#D5C2A5]"})]})]}),s.jsx("div",{className:"flex-1 min-h-0 flex flex-col justify-center",children:s.jsx("div",{className:"components-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 lg:gap-6 2xl:gap-8 pb-4 md:pb-0",children:Ub.map((e,t)=>{const n=e.icon;return s.jsx(A.div,{initial:{opacity:0,y:20},whileInView:{opacity:1,y:0},transition:{duration:.6,delay:t*.05},viewport:{once:!0},className:"component-card group relative bg-[#FBF7F1] border border-[#E5D8C7] rounded-[15px] md:rounded-[20px] 2xl:rounded-[25px] p-3.5 md:p-4 lg:p-6 2xl:p-8 overflow-hidden hover:shadow-[0_25px_60px_rgba(0,0,0,0.06)] transition-all duration-500 flex items-center md:block",children:s.jsxs("div",{className:"component-card-content flex items-center gap-4 md:items-start md:gap-4 2xl:gap-6 w-full",children:[s.jsxs("div",{className:"component-text-content flex-1 min-w-0",children:[s.jsxs("div",{className:"component-id-icon-row flex items-center gap-2.5 mb-1.5 md:mb-3 2xl:mb-6",children:[s.jsx("span",{className:"text-[#9E8562] font-serif text-[12px] md:text-[14px] lg:text-[15px] 2xl:text-[18px]",children:e.id}),s.jsx("div",{className:"icon-container w-5 h-5 md:w-7 md:h-7 lg:w-9 lg:h-9 2xl:w-11 2xl:h-11 rounded-full border border-[#D8C7B0] flex items-center justify-center bg-[#F8F1E7]",children:s.jsx(n,{size:11,className:"text-[#A88B63] md:w-3.5 md:h-3.5 lg:w-4.5 lg:h-4.5 2xl:w-5.5 2xl:h-5.5",strokeWidth:1.6})})]}),s.jsx("h3",{className:"component-title font-serif text-[#1B1B1B] text-[16px] md:text-[18px] lg:text-[22px] 2xl:text-[26px] leading-tight mb-1 md:mb-2 lg:mb-4 2xl:mb-5 break-words",children:e.title}),s.jsx("p",{className:"component-desc text-[#4E4943] text-[11px] md:text-[11px] lg:text-[13px] 2xl:text-[16px] leading-relaxed font-light line-clamp-2 md:line-clamp-3 2xl:line-clamp-none break-words",children:e.description})]}),s.jsxs("div",{className:"component-thumb relative min-w-[60px] h-[60px] md:min-w-[85px] md:h-[85px] lg:min-w-[110px] lg:h-[110px] 2xl:min-w-[140px] 2xl:h-[140px] rounded-full overflow-hidden shrink-0",children:[s.jsx("img",{src:"./images/vasakshep.webp",alt:"",className:"absolute inset-0 w-full h-full object-cover scale-[1.7] blur-[1px] opacity-40"}),s.jsx("div",{className:"absolute inset-0 bg-[#F4EBDD]/40 z-[1]"}),s.jsx("div",{className:"absolute inset-0 z-[2] flex items-center justify-center p-1.5 md:p-2 2xl:p-5",children:s.jsx("img",{src:e.image,alt:e.title,className:"w-full h-full object-cover rounded-full scale-[1.05] group-hover:scale-[1.1] transition duration-700"})})]})]})},t)})})})]})]}),Wb=()=>{const e=[{name:"Geeta Sata",text:"Realy u have superb vision, brain and tt spark to work in yr field.. I love all the things you put very creative..",location:"Mumbai"},{name:"Rahul Jain",text:"Hi harshmi, how r you dear. I absolutely loved loved the Rakshapotli. The finish, the quality of red potli is amazing. I was little worried as I have seen many enamel work everywhere that cannot achieve it's best finish, but your rakshapotli is superbly done. Thankyou for all your efforts and being sucha a good listener right from the start. I will proudly recommend you to my circle. Also I loved the box you sent in. The feel of whole package is so good ❤️ Keep up the great work. Will let you know my bhabhi's review once we gift them 🤗🤗",location:"London"},{name:"Hardi Shah",text:"I have been seeing rakshapotli in gold, diamond and many other fancy medium but none made an appeal to me. Always wanted one for my brother to tie him as a Rakhi. Had been following harshmi works since ages as we were from same college, I always found her work to be uniquely symbolic to person for whom she made.. this added more emotional value to jewellery. When I saw her rakshapotli it convinced me that I need this for my brother.. She customised each minute details with lots of love and perfection! Each small details were discussed and elaborated well. And when it was delivered to me, it was perfectly made as discussed and imagined! Thank you harshmi for fabricating so well! Hope to get many more unique Jewelry done with you ❤️😊",location:"New York"},{name:"Rashmi Patwardhan",text:"The first time I saw the Raksha potli...I fell in love with it and wanted it right away!! Harshmi helped me customise it as per my needs and the complete journey from Color selection to the material was enigmatic!! The product I got was perfect and loved every bit of it. We went through an awesome journey to have the BLESSED potli in in no time!! Love love love it 😍",location:"Dubai"},{name:"Priyal Doshi",text:"Hi Harshmi Thank you so much for the lovely Rakshapotli 😍00 It's simply awesome 🤗❤️ really really loved it alot 🥰🥰 Will wear tomorrow morning n let u know 😊",location:"Ahmedabad"},{name:"Ankit Shah",text:"Best gift 🎁 for children’s and family, unique art of work with the blend of spiritual idea",location:"Singapore"}],[t,n]=y.useState(null),r=[...e,...e,...e];return s.jsxs("section",{className:"bg-[#F7F2EA] w-full h-full flex flex-col justify-center py-6 md:py-16 lg:py-12 2xl:py-24 overflow-hidden relative",children:[s.jsx("div",{className:"absolute top-0 right-0 w-64 h-64 bg-[#C6A87A]/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/3"}),s.jsx("div",{className:"absolute bottom-0 left-0 w-96 h-96 bg-[#8c6d4a]/5 blur-[120px] rounded-full translate-y-1/2 -translate-x-1/4"}),s.jsxs("div",{className:"relative z-10 w-full",children:[s.jsx("div",{className:"text-center mb-8 md:mb-16 lg:mb-10 2xl:mb-16 px-4",children:s.jsxs(A.div,{initial:{opacity:0,y:20},whileInView:{opacity:1,y:0},transition:{duration:.8},viewport:{once:!0},children:[s.jsx("p",{className:"uppercase tracking-[0.4em] text-[10px] md:text-xs text-[#8c6d4a] font-bold mb-3",children:"Lived Experiences"}),s.jsx("h2",{className:"font-serif text-3xl md:text-5xl lg:text-4xl 2xl:text-6xl text-[#1C1B19] leading-tight",children:"Human Impressions"}),s.jsx("div",{className:"w-12 md:w-20 h-[0.5px] bg-[#C6A87A] mx-auto mt-4 mb-2 opacity-50"})]})}),s.jsx("div",{className:"flex overflow-hidden group",children:s.jsx(A.div,{className:"flex gap-4 md:gap-8 px-4",animate:{x:[0,"-33.33%"]},transition:{x:{duration:50,repeat:1/0,ease:"linear"}},children:r.map((i,a)=>s.jsxs("div",{className:"w-[280px] xs:w-[320px] md:w-[360px] lg:w-[320px] 2xl:w-[400px] shrink-0 bg-white/70 backdrop-blur-sm rounded-[24px] md:rounded-[32px] border border-[#eadccf]/60 p-6 md:p-8 flex flex-col shadow-[0_10px_30px_rgba(0,0,0,0.03)] hover:shadow-xl transition-all duration-500 hover:-translate-y-2 group/card h-[400px] xs:h-[420px] md:h-[380px] lg:h-[340px] 2xl:h-[400px]",children:[s.jsxs("div",{className:"flex justify-between items-start mb-4",children:[s.jsx(Hp,{className:"text-[#C6A87A]/40 group-hover/card:text-[#C6A87A] transition-colors duration-500 w-6 h-6 md:w-8 md:h-8"}),s.jsx("div",{className:"flex gap-0.5",children:[...Array(5)].map((o,l)=>s.jsx(Gp,{size:12,fill:"#B68B5A",className:"text-[#B68B5A]"},l))})]}),s.jsxs("p",{className:"text-[#1C1B19] text-[13px] xs:text-[14px] md:text-base leading-relaxed font-light mb-4 line-clamp-6",children:['"',i.text,'"']}),s.jsxs("div",{className:"mt-auto flex flex-col gap-3",children:[s.jsxs("button",{onClick:()=>n(i),className:"text-[10px] md:text-xs tracking-[0.2em] uppercase font-bold text-[#8c6d4a] hover:text-[#6b553c] transition-colors w-fit flex items-center gap-2",children:["Read Full Story ",s.jsx("span",{className:"text-lg",children:"→"})]}),s.jsx("div",{className:"pt-3 border-t border-[#eadccf]/40 flex items-center justify-between",children:s.jsx("div",{children:s.jsx("div",{className:"font-serif text-base md:text-lg text-[#1C1B19]",children:i.name})})})]})]},a))})}),s.jsx(A.p,{initial:{opacity:0},whileInView:{opacity:1},transition:{delay:.5},className:"text-center mt-6 md:mt-12 uppercase tracking-[0.5em] text-[10px] md:text-xs text-[#8c6d4a]/60 font-bold -translate-y-2 md:-translate-y-8",children:"Blessed Globally"})]}),s.jsx(dt,{children:t&&s.jsx(A.div,{initial:{opacity:0},animate:{opacity:1},exit:{opacity:0},className:"fixed inset-0 z-[1000] bg-black/40 backdrop-blur-md flex items-center justify-center p-4",onClick:()=>n(null),children:s.jsxs(A.div,{initial:{scale:.9,y:20},animate:{scale:1,y:0},exit:{scale:.9,y:20},onClick:i=>i.stopPropagation(),className:"bg-[#F7F2EA] rounded-[40px] max-w-2xl w-full p-8 md:p-12 relative shadow-2xl border border-white/20",children:[s.jsx("button",{onClick:()=>n(null),className:"absolute top-6 right-6 p-2 rounded-full bg-white/50 hover:bg-white transition-colors",children:s.jsx(Nt,{size:20})}),s.jsxs("div",{className:"mb-8",children:[s.jsx(Hp,{className:"text-[#C6A87A] mb-4",size:48}),s.jsx("div",{className:"flex gap-1 mb-6",children:[...Array(5)].map((i,a)=>s.jsx(Gp,{size:16,fill:"#B68B5A",className:"text-[#B68B5A]"},a))}),s.jsxs("p",{className:"text-[#1C1B19] text-lg md:text-xl leading-[1.8] font-light italic",children:['"',t.text,'"']})]}),s.jsx("div",{className:"border-t border-[#eadccf] pt-8 flex items-center justify-between",children:s.jsx("div",{children:s.jsx("div",{className:"font-serif text-2xl md:text-3xl text-[#1C1B19]",children:t.name})})})]})})})]})},H="https://drishanti.biz499.com",le={PRODUCTS:`${H}/api/products/`,CATEGORIES:`${H}/api/categories/`,SUBCATEGORIES:`${H}/api/subcategories/`,BESTSELLERS:`${H}/api/products/bestsellers/`,FEATURED:`${H}/api/products/featured/`,PRODUCT_DETAIL:e=>`${H}/api/products/${e}/`,CART:`${H}/api/cart/`,CLEAR_CART:`${H}/api/cart/clear/`,WISHLIST:`${H}/api/wishlist/`,CREATE_ORDER:`${H}/api/create-order/`,CREATE_COD_ORDER:`${H}/api/create-cod-order/`,VERIFY_PAYMENT:`${H}/api/verify-payment/`,COUPONS_APPLY:`${H}/api/coupons/apply/`,ORDERS:`${H}/api/orders/`,ORDER_DETAIL:e=>`${H}/api/orders/${e}/`},eg=y.createContext(),kr=()=>{const e=y.useContext(eg);if(!e)throw new Error("useWishlist must be used within a WishlistProvider");return e},Hb=()=>{let e=localStorage.getItem("drishanti_session_id");return e||(e="session_"+Math.random().toString(36).substr(2,9),localStorage.setItem("drishanti_session_id",e)),e},qb=({children:e})=>{const[t,n]=y.useState([]),[r,i]=y.useState(!0),[a,o]=y.useState(!1),l=Hb(),c=async()=>{try{const v=(await(await fetch(`${le.WISHLIST}?session_id=${l}`)).json()).map(j=>({...j,id:j.product,wishlist_item_id:j.id,quantity:1}));n(v)}catch(g){console.error("Error fetching wishlist:",g)}finally{i(!1)}};y.useEffect(()=>{c()},[l]);const u=async g=>{try{const w=!p(g.id||g.product),v=await fetch(`${le.WISHLIST}?session_id=${l}`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({product_id:g.id||g.product})}),j=await v.json();if(!v.ok)throw console.log(j),new Error("Failed to update wishlist");await c(),w&&o(!0)}catch(w){console.error("Error toggling wishlist:",w)}},d=(g,w)=>{n(v=>v.map(j=>j.id===g?{...j,quantity:Math.max(1,j.quantity+w)}:j))},p=g=>t.some(w=>w.id===g),m=t.length;return s.jsx(eg.Provider,{value:{wishlist:t,loading:r,isWishlistOpen:a,setIsWishlistOpen:o,toggleWishlist:u,updateWishlistQuantity:d,isInWishlist:p,wishlistCount:m},children:e})},Gb=()=>{const e=[{title:"Newborns and Infants",icon:s.jsx(xb,{}),img:"./images/newborn.webp",link:"#"},{title:"Moms and Expectant Mothers",icon:s.jsx(kt,{}),img:"./images/moms.webp",link:"#"},{title:"Paarnas",icon:s.jsx(Zx,{}),img:"./images/paarnas.webp",link:"#"},{title:"Tapasvis (Ascetics)",icon:s.jsx(Eb,{}),img:"./images/tapasvi.webp",link:"#"},{title:"Prabhavna",icon:s.jsx(or,{}),img:"./images/prabhavna.webp",link:"#"},{title:"Housewarming and Gifting",icon:s.jsx(Db,{}),img:"./images/housewarming.webp",link:"#"},{title:"Puja Return Gifts",icon:s.jsx(Rb,{}),img:"./images/Puja-gifts.webp",link:"#"},{title:"Wedding and Engagement",icon:s.jsx(Sb,{}),img:"./images/wedding.webp",link:"#"},{title:"Festivals",icon:s.jsx(or,{}),img:"./images/festivals.webp",link:"#"},{title:"Spiritual Retreats",icon:s.jsx(jb,{}),img:"./images/spiritual.webp",link:"#"},{title:"Birthdays and Milestones",icon:s.jsx(fb,{}),img:"./images/birthdays.webp",link:"#"},{title:"Personal Protection and Devotion",icon:s.jsx(Si,{}),img:"./images/personal-protection.webp",link:"#"},{title:"Rakshabandhan",icon:s.jsx(Si,{}),img:"./images/rakshabandhan.webp",link:"#"},{title:"Poojans",icon:s.jsx(or,{}),img:"./images/poojan.webp",link:"#"}];return s.jsxs("section",{className:"occasions-section relative h-full w-full bg-[#fdf9f4] flex flex-col items-center px-4 md:px-8 lg:px-12 2xl:px-16 overflow-hidden no-scrollbar",children:[s.jsx("style",{dangerouslySetInnerHTML:{__html:`
         /* TIER 1 & 2: Mobile Screens (Up to 767px) */
         @media (max-width: 767px) {
-          .occasions-section { justify-content: center !important; padding-top: 2rem !important; padding-bottom: 2rem !important; }
-          .occasions-header { margin-bottom: 1rem !important; }
-          .occasions-h2 { font-size: 24px !important; margin-bottom: 4px !important; }
-          .occasions-p { font-size: 11px !important; margin-bottom: 0.5rem !important; line-height: 1.4 !important; max-width: 300px !important; }
-          .occasions-divider { transform: scale(0.85); margin-top: 0.5rem !important; }
+          .occasions-section { justify-content: center !important; padding-top: 1rem !important; padding-bottom: 3.5rem !important; }
+          .occasions-header { margin-bottom: 0.5rem !important; }
+          .occasions-h2 { font-size: 20px !important; margin-bottom: 2px !important; }
+          .occasions-p { font-size: 9px !important; margin-bottom: 0.25rem !important; line-height: 1.2 !important; max-width: 260px !important; }
+          .occasions-divider { transform: scale(0.6); margin-top: 0.25rem !important; }
           
           .occasions-grid { 
-            display: flex !important;
-            flex-wrap: wrap !important;
-            justify-content: center !important;
-            gap: 0.85rem !important; 
-            padding: 0 1rem !important;
+            display: grid !important;
+            grid-template-columns: repeat(4, 1fr) !important;
+            gap: 0.4rem !important; 
+            padding: 0 0.5rem !important;
             max-width: 100% !important;
           }
           
-          .occasion-wrapper { width: calc(33.33% - 0.75rem) !important; flex-shrink: 0 !important; }
-          .occasion-card { padding: 0.85rem !important; border-radius: 16px !important; }
-          .occasion-icon-container { height: 2.5rem !important; margin-bottom: 0.35rem !important; }
-          .occasion-icon { width: 1.8rem !important; height: 1.8rem !important; }
-          .occasion-title-container { height: 2rem !important; }
-          .occasion-title { font-size: 11px !important; line-height: 1.2 !important; }
+          .occasion-wrapper { width: 100% !important; flex-shrink: 1 !important; }
+          .occasion-card { padding: 0.4rem !important; border-radius: 10px !important; }
+          .occasion-icon-container { height: 1.6rem !important; margin-bottom: 0.2rem !important; }
+          .occasion-icon { width: 1.2rem !important; height: 1.2rem !important; }
+          .occasion-title-container { height: 1.8rem !important; }
+          .occasion-title { font-size: 8px !important; line-height: 1.1 !important; font-weight: 500 !important; }
+        }
+
+        /* Extreme Small Screen Optimization */
+        @media (max-width: 360px) {
+          .occasions-h2 { font-size: 18px !important; }
+          .occasions-grid { gap: 0.3rem !important; }
+          .occasion-card { padding: 0.3rem !important; }
+          .occasion-title { font-size: 7.5px !important; }
         }
 
         /* Short Screen Optimization */
         @media (max-height: 700px) and (max-width: 767px) {
-          .occasions-section { padding-top: 1rem !important; padding-bottom: 1rem !important; }
-          .occasions-header { margin-bottom: 0.5rem !important; }
-          .occasions-h2 { font-size: 20px !important; }
-          .occasions-p { font-size: 10px !important; }
+          .occasions-section { padding-top: 0.5rem !important; padding-bottom: 3rem !important; }
+          .occasions-header { margin-bottom: 0.25rem !important; }
+          .occasions-h2 { font-size: 18px !important; }
+          .occasions-p { display: none !important; }
           .occasions-divider { display: none !important; }
-          .occasions-grid { gap: 0.5rem !important; }
-          .occasion-wrapper { width: calc(33.33% - 0.45rem) !important; }
-          .occasion-card { padding: 0.5rem !important; }
-          .occasion-icon-container { height: 1.8rem !important; }
-          .occasion-icon { width: 1.4rem !important; height: 1.4rem !important; }
+          .occasions-grid { gap: 0.35rem !important; }
+          .occasion-icon-container { height: 1.4rem !important; }
+          .occasion-icon { width: 1.1rem !important; height: 1.1rem !important; }
           .occasion-title-container { height: 1.5rem !important; }
-          .occasion-title { font-size: 9px !important; }
+          .occasion-title { font-size: 7.5px !important; }
         }
 
         /* TIER 3: Tab (768px - 1023px) */
