@@ -4,7 +4,7 @@ from .models import Category, SubCategory, Product, Coupon, Order, OrderItem, Wi
 class SubCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = SubCategory
-        fields = ['id', 'name', 'slug']
+        fields = ['id', 'category', 'name', 'slug']
 
 class CategorySerializer(serializers.ModelSerializer):
     subcategories = SubCategorySerializer(many=True, read_only=True)
