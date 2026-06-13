@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, Order, OrderItem, Wishlist, Cart, Coupon, Category, SubCategory, ProductSize
+from .models import Product, Order, OrderItem, Wishlist, Cart, Coupon, Category, SubCategory, ProductSize, CustomizedProduct
 
 
 # 📂 CATEGORY ADMIN
@@ -13,6 +13,14 @@ class SubCategoryAdmin(admin.ModelAdmin):
     list_display = ('name', 'category', 'slug')
     list_filter = ('category',)
     prepopulated_fields = {'slug': ('name',)}
+
+
+@admin.register(CustomizedProduct)
+class CustomizedProductAdmin(admin.ModelAdmin):
+    list_display = ('id', 'title', 'badge', 'is_active', 'created_at')
+    list_editable = ('is_active',)
+    search_fields = ('title',)
+    list_filter = ('is_active', 'badge')
 
 
 class ProductSizeInline(admin.TabularInline):

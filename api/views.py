@@ -9,10 +9,11 @@ from rest_framework.decorators import api_view, authentication_classes, permissi
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from django.db.models import Q
-from .models import Order, Product, Wishlist, Cart, Coupon, OrderItem, Category, SubCategory
+from .models import Order, Product, Wishlist, Cart, Coupon, OrderItem, Category, SubCategory, CustomizedProduct
 from .serializers import (
     ProductSerializer, WishlistSerializer, CartSerializer, 
-    OrderSerializer, CategorySerializer, SubCategorySerializer
+    OrderSerializer, CategorySerializer, SubCategorySerializer,
+    CustomizedProductSerializer
 )
 
 
@@ -21,6 +22,14 @@ from django.shortcuts import render
 
 def frontend(request):
     return render(request, "index.html")
+
+@api_view(['GET'])
+@authentication_classes([])
+@permission_classes([AllowAny])
+def get_customized_products(request):
+    products = CustomizedProduct.objects.filter(is_active=True).order_by('-created_at')
+    serializer = CustomizedProductSerializer(products, many=True)
+    return Response(serializer.data)
 
 # 📂 CATEGORY VIEWS
 class CategoryListView(ListAPIView):

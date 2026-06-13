@@ -3,11 +3,12 @@ from .views import (
     create_razorpay_order, verify_payment, get_products, get_bestsellers, 
     get_featured, get_product_detail, wishlist_manager, cart_manager, 
     clear_cart, apply_coupon, create_cod_order, get_user_orders, get_order_detail,
-    CategoryListView, SubCategoryListView
+    CategoryListView, SubCategoryListView, get_customized_products
 )
 
 urlpatterns = [
     path('products/', get_products),
+    path('customized-products/', get_customized_products),
     path('products/bestsellers/', get_bestsellers),
     path('products/featured/', get_featured),
     path('products/<slug:slug>/', get_product_detail),

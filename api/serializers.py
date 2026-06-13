@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Category, SubCategory, Product, Coupon, Order, OrderItem, Wishlist, Cart, ProductSize
+from .models import Category, SubCategory, Product, Coupon, Order, OrderItem, Wishlist, Cart, ProductSize, CustomizedProduct
 
 class SubCategorySerializer(serializers.ModelSerializer):
     class Meta:
@@ -10,6 +10,11 @@ class ProductSizeSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductSize
         fields = ['id', 'size']
+
+class CustomizedProductSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomizedProduct
+        fields = '__all__'
 
 class CategorySerializer(serializers.ModelSerializer):
     subcategories = SubCategorySerializer(many=True, read_only=True)
