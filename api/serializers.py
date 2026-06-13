@@ -1,10 +1,15 @@
 from rest_framework import serializers
-from .models import Category, SubCategory, Product, Coupon, Order, OrderItem, Wishlist, Cart
+from .models import Category, SubCategory, Product, Coupon, Order, OrderItem, Wishlist, Cart, ProductSize
 
 class SubCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = SubCategory
         fields = ['id', 'category', 'name', 'slug']
+
+class ProductSizeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProductSize
+        fields = ['id', 'size']
 
 class CategorySerializer(serializers.ModelSerializer):
     subcategories = SubCategorySerializer(many=True, read_only=True)
@@ -16,6 +21,7 @@ class CategorySerializer(serializers.ModelSerializer):
 class ProductSerializer(serializers.ModelSerializer):
     new_category_name = serializers.CharField(source='new_category.name', read_only=True)
     subcategory_name = serializers.CharField(source='subcategory.name', read_only=True)
+    available_sizes = ProductSizeSerializer(many=True, read_only=True)
 
     class Meta:
         model = Product

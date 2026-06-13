@@ -67,7 +67,6 @@ class Product(models.Model):
     detail_image_8 = models.ImageField(upload_to='products/', null=True, blank=True)
     detail_image_9 = models.ImageField(upload_to='products/', null=True, blank=True)
     video = models.FileField(upload_to='products/videos/', null=True, blank=True)
-
     gallery_images = models.JSONField(default=list, blank=True, help_text="List of additional product image URLs (Legacy)")
     description = models.TextField(blank=True)
     
@@ -80,7 +79,7 @@ class Product(models.Model):
     size_chart = models.TextField(blank=True, null=True)
     style_number = models.CharField(max_length=100, blank=True, null=True)
     bracelet_size = models.CharField(max_length=100, blank=True, null=True)
-    standard_chain_sizes = models.CharField(max_length=255, blank=True, null=True)
+    standard_preferable_chain_sizes = models.TextField(blank=True, null=True)
 
     stock = models.IntegerField(default=10)
     is_bestseller = models.BooleanField(default=False)
@@ -97,6 +96,13 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+class ProductSize(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='available_sizes')
+    size = models.CharField(max_length=255, help_text="e.g., 5.5\" TO 7.2\" (1.8mm thickness)")
+
+    def __str__(self):
+        return f"{self.product.name} - {self.size}"
 
 
 # 🎁 COUPON MODEL

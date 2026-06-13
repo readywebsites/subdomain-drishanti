@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, Order, OrderItem, Wishlist, Cart, Coupon, Category, SubCategory
+from .models import Product, Order, OrderItem, Wishlist, Cart, Coupon, Category, SubCategory, ProductSize
 
 
 # 📂 CATEGORY ADMIN
@@ -15,6 +15,11 @@ class SubCategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
 
 
+class ProductSizeInline(admin.TabularInline):
+    model = ProductSize
+    extra = 1
+
+
 # 🔥 PRODUCT ADMIN (IMAGE + FILTER + BESTSELLER)
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
@@ -23,6 +28,7 @@ class ProductAdmin(admin.ModelAdmin):
     search_fields = ('name', 'style_number')
     list_filter = ('material', 'category', 'is_active', 'is_bestseller', 'is_featured')
     prepopulated_fields = {'slug': ('name',)}
+    inlines = [ProductSizeInline]
     
     fieldsets = (
         ('Basic Information', {
@@ -39,7 +45,7 @@ class ProductAdmin(admin.ModelAdmin):
             )
         }),
         ('Product Specifications', {
-            'fields': ('material', 'type', 'style_number', 'silver_weight', 'chain_length', 'bracelet_size', 'standard_chain_sizes')
+            'fields': ('material', 'type', 'style_number', 'silver_weight', 'chain_length', 'bracelet_size', 'standard_preferable_chain_sizes')
         }),
         ('Descriptions & Guidance', {
             'fields': ('description', 'product_details', 'care_instructions', 'activation_guidance', 'size_chart')
