@@ -33,6 +33,8 @@ ALLOWED_HOSTS = [ '127.0.0.1', 'localhost', 'drishanti.com', 'www.drishanti.com'
 # Application definition
 
 INSTALLED_APPS = [
+    "jazzmin",
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -148,3 +150,35 @@ CORS_ALLOW_HEADERS = [
     'x-requested-with',
     'x-session-id',
 ]
+
+
+# Jazzmin Admin Customization
+JAZZMIN_SETTINGS = {
+    "site_title": "Drishanti Admin",
+    "site_header": "Drishanti",
+    "site_brand": "Drishanti",
+    "welcome_sign": "Welcome to Drishanti Admin Panel",
+
+    "show_sidebar": True,
+    "navigation_expanded": True,
+
+    "icons": {
+        "api.Product": "fas fa-gem",
+        "api.Category": "fas fa-folder",
+        "api.SubCategory": "fas fa-folder-open",
+        "api.Order": "fas fa-shopping-cart",
+        "api.OrderItem": "fas fa-box",
+        "api.Coupon": "fas fa-tags",
+        "api.CustomizedProduct": "fas fa-star",
+        "api.Wishlist": "fas fa-heart",
+        "api.Cart": "fas fa-cart-plus",
+    },
+
+    "topmenu_links": [
+        {"name": "Home", "url": "admin:index"},
+    ],
+
+    "order_with_respect_to": [
+        "api",
+    ],
+}
