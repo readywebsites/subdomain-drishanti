@@ -36,6 +36,41 @@ class ProductSizeInline(admin.TabularInline):
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
 
+    def duplicate_products(self, request, queryset):
+        for product in queryset:
+            original_pk = product.pk
+            # Fetch related sizes before losing the original PK
+            original_sizes = list(ProductSize.objects.filter(product_id=original_pk))
+            
+            # Clone the product
+            product.pk = None
+            product.slug = ""  # Keep slug empty as requested
+            
+            # Save to create new instance
+            # Note: The model's save() method will try to slugify the name.
+            # If the name is identical, we might get an IntegrityError.
+            # We'll try to save and if it fails, we'll append " (Copy)" to the name.
+            try:
+                product.save()
+            except Exception:
+                from django.utils.text import slugify
+                import uuid
+                product.name = f"{product.name} (Copy)"
+                # Even with (Copy), slug might conflict if multiple copies exist.
+                # We'll let Django try slugify again.
+                product.slug = ""
+                product.save()
+
+            # Clone related sizes
+            for size in original_sizes:
+                size.pk = None
+                size.product = product
+                size.save()
+
+        self.message_user(request, f"{queryset.count()} products duplicated successfully.")
+
+    duplicate_products.short_description = "Duplicate selected products"
+
     def product_image(self, obj):
         if obj.image:
             return format_html(
@@ -58,6 +93,8 @@ class ProductAdmin(admin.ModelAdmin):
         'is_featured',
         'is_active'
     )
+
+    actions = ['duplicate_products']
 
     list_editable = (
         'price',
