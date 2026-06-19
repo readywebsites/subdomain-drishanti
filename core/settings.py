@@ -155,8 +155,8 @@ CORS_ALLOW_HEADERS = [
 # Jazzmin Admin Customization
 JAZZMIN_SETTINGS = {
     "site_title": "Drishanti Admin",
-    "site_header": "Drishanti",
-    "site_brand": "Drishanti",
+    "site_header": "Admin",
+    "site_brand": "Admin",
     "welcome_sign": "Welcome to Drishanti Admin Panel",
 
     "site_logo": "../images/logo.webp",
