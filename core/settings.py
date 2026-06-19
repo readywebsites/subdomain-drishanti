@@ -159,6 +159,10 @@ JAZZMIN_SETTINGS = {
     "site_brand": "Drishanti",
     "welcome_sign": "Welcome to Drishanti Admin Panel",
 
+    "site_logo": "./dist/images/logo.webp",
+    "login_logo": "./dist/images/logo.webp",
+    "site_icon": "./dist/images/favicon.ico",
+
     "show_sidebar": True,
     "navigation_expanded": True,
 

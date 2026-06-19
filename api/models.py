@@ -222,6 +222,7 @@ class Cart(models.Model):
 class CustomizedProduct(models.Model):
     title = models.CharField(max_length=200)
     image = models.ImageField(upload_to='customized/')
+    description = models.TextField(blank=True, null=True)
     badge = models.CharField(max_length=50, blank=True, null=True, help_text="e.g., Bestseller, Premium, New")
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
