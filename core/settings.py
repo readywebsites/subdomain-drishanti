@@ -176,6 +176,7 @@ JAZZMIN_SETTINGS = {
         "api.CustomizedProduct": "fas fa-star",
         "api.Wishlist": "fas fa-heart",
         "api.Cart": "fas fa-cart-plus",
+        "api.ContactMessage": "fas fa-envelope",
     },
 
     "topmenu_links": [

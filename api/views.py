@@ -9,11 +9,11 @@ from rest_framework.decorators import api_view, authentication_classes, permissi
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from django.db.models import Q
-from .models import Order, Product, Wishlist, Cart, Coupon, OrderItem, Category, SubCategory, CustomizedProduct
+from .models import Order, Product, Wishlist, Cart, Coupon, OrderItem, Category, SubCategory, CustomizedProduct, ContactMessage
 from .serializers import (
     ProductSerializer, WishlistSerializer, CartSerializer, 
     OrderSerializer, CategorySerializer, SubCategorySerializer,
-    CustomizedProductSerializer
+    CustomizedProductSerializer, ContactMessageSerializer
 )
 
 
@@ -486,3 +486,15 @@ def cart_manager(request):
         size = request.data.get('size', 'Standard')
         Cart.objects.filter(session_id=session_id, product_id=product_id, size=size).delete()
         return Response({'status': 'deleted'})
+
+
+# 📩 CONTACT FORM SUBMISSION VIEW
+@api_view(['POST'])
+@authentication_classes([])
+@permission_classes([AllowAny])
+def contact_view(request):
+    serializer = ContactMessageSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response({'status': 'success', 'message': 'Message saved successfully!'}, status=201)
+    return Response(serializer.errors, status=400)

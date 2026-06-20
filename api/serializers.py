@@ -1,5 +1,10 @@
 from rest_framework import serializers
-from .models import Category, SubCategory, Product, Coupon, Order, OrderItem, Wishlist, Cart, ProductSize, CustomizedProduct
+from .models import Category, SubCategory, Product, Coupon, Order, OrderItem, Wishlist, Cart, ProductSize, CustomizedProduct, ContactMessage
+
+class ContactMessageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ContactMessage
+        fields = ['id', 'name', 'email', 'message', 'created_at']
 
 class SubCategorySerializer(serializers.ModelSerializer):
     class Meta:

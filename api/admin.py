@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from django.utils.html import format_html
-from .models import Product, Order, OrderItem, Wishlist, Cart, Coupon, Category, SubCategory, ProductSize, CustomizedProduct
+from .models import Product, Order, OrderItem, Wishlist, Cart, Coupon, Category, SubCategory, ProductSize, CustomizedProduct, ContactMessage
 
 
 # 📂 CATEGORY ADMIN
@@ -275,3 +275,11 @@ class CartAdmin(admin.ModelAdmin):
         'created_at'
     )
     search_fields = ('session_id', 'product__name')
+
+
+@admin.register(ContactMessage)
+class ContactMessageAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'email', 'created_at')
+    search_fields = ('name', 'email', 'message')
+    readonly_fields = ('created_at',)
+    ordering = ('-created_at',)
