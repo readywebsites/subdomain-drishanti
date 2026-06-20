@@ -182,18 +182,29 @@ def create_razorpay_order(request):
     if amount <= 0:
         return Response({'detail': 'Invalid amount'}, status=400)
 
-    client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
-    payment = client.order.create({
-        'amount': amount,
-        'currency': 'INR',
-        'payment_capture': 1,
-    })
+    try:
+        if not settings.RAZORPAY_KEY_ID or settings.RAZORPAY_KEY_ID == 'your_key_id':
+            return Response({'detail': 'Razorpay Key ID is not configured in the .env file.'}, status=400)
+        if not settings.RAZORPAY_KEY_SECRET or settings.RAZORPAY_KEY_SECRET == 'your_key_secret':
+            return Response({'detail': 'Razorpay Key Secret is not configured in the .env file.'}, status=400)
 
-    return Response({
-        'order_id': payment['id'],
-        'amount': payment['amount'],
-        'currency': payment['currency'],
-    })
+        client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
+        payment = client.order.create({
+            'amount': amount,
+            'currency': 'INR',
+            'payment_capture': 1,
+        })
+
+        return Response({
+            'order_id': payment['id'],
+            'amount': payment['amount'],
+            'currency': payment['currency'],
+        })
+    except Exception as e:
+        return Response({
+            'detail': f'Razorpay SDK Error: {str(e)}',
+            'info': 'Please check if your Razorpay Key ID and Secret Key in subdomain-backend/.env are correct.'
+        }, status=400)
 
 
 @api_view(['POST'])
