@@ -8,18 +8,35 @@ from django.core.mail import send_mail
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
+from rest_framework import status
+from rest_framework.views import APIView
+
 from django.db.models import Q
-from .models import Order, Product, Wishlist, Cart, Coupon, OrderItem, Category, SubCategory, CustomizedProduct, ContactMessage
+from .models import Order, Product, Wishlist, Cart, Coupon, OrderItem, Category, SubCategory, CustomizedProduct, ContactMessage, NewsletterSubscription
 from .serializers import (
     ProductSerializer, WishlistSerializer, CartSerializer, 
     OrderSerializer, CategorySerializer, SubCategorySerializer,
-    CustomizedProductSerializer, ContactMessageSerializer
+    CustomizedProductSerializer, ContactMessageSerializer, NewsletterSubscriptionSerializer
 )
 
 
 from rest_framework.generics import ListAPIView
 from django.shortcuts import render
 
+class NewsletterSubscriptionView(APIView):
+
+    def post(self, request):
+        serializer = NewsletterSubscriptionSerializer(data=request.data)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(
+                {"message": "Subscribed successfully"},
+                status=status.HTTP_201_CREATED
+            )
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
 def frontend(request):
     return render(request, "index.html")
 

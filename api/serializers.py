@@ -1,5 +1,10 @@
 from rest_framework import serializers
-from .models import Category, SubCategory, Product, Coupon, Order, OrderItem, Wishlist, Cart, ProductSize, CustomizedProduct, ContactMessage
+from .models import Category, SubCategory, Product, Coupon, Order, OrderItem, Wishlist, Cart, ProductSize, CustomizedProduct, ContactMessage, NewsletterSubscription
+
+class NewsletterSubscriptionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = NewsletterSubscription
+        fields = ["id", "email", "created_at"]
 
 class ContactMessageSerializer(serializers.ModelSerializer):
     class Meta:

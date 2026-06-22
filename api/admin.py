@@ -1,8 +1,12 @@
 from django.contrib import admin
 
 from django.utils.html import format_html
-from .models import Product, Order, OrderItem, Wishlist, Cart, Coupon, Category, SubCategory, ProductSize, CustomizedProduct, ContactMessage
+from .models import Product, Order, OrderItem, Wishlist, Cart, Coupon, Category, SubCategory, ProductSize, CustomizedProduct, ContactMessage, NewsletterSubscription
 
+@admin.register(NewsletterSubscription)
+class NewsletterSubscriptionAdmin(admin.ModelAdmin):
+    list_display = ("email", "created_at")
+    search_fields = ("email",)
 
 # 📂 CATEGORY ADMIN
 @admin.register(Category)
