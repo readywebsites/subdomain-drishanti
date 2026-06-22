@@ -26,16 +26,27 @@ from django.shortcuts import render
 class NewsletterSubscriptionView(APIView):
 
     def post(self, request):
+        print("NEWSLETTER HIT")
+        print(request.data)
+
         serializer = NewsletterSubscriptionSerializer(data=request.data)
 
         if serializer.is_valid():
             serializer.save()
+
+            print("SAVED SUCCESSFULLY")
+
             return Response(
                 {"message": "Subscribed successfully"},
                 status=status.HTTP_201_CREATED
             )
 
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        print("VALIDATION ERRORS:", serializer.errors)
+
+        return Response(
+            serializer.errors,
+            status=status.HTTP_400_BAD_REQUEST
+        )
     
 def frontend(request):
     return render(request, "index.html")
