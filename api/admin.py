@@ -187,7 +187,7 @@ class ProductAdmin(NoDeleteAdmin):
     inlines = [ProductSizeInline]
 
     class Media:
-        js = ('admin/js/chained-categories.js?v=5',)
+        js = ('admin/js/chained-categories.js?v=6',)
 
     fieldsets = (
         ('Basic Information', {
