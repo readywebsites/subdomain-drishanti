@@ -12,16 +12,30 @@ from rest_framework import status
 from rest_framework.views import APIView
 
 from django.db.models import Q
-from .models import Order, Product, Wishlist, Cart, Coupon, OrderItem, Category, SubCategory, CustomizedProduct, ContactMessage, NewsletterSubscription
+from .models import (
+    Order, Product, Wishlist, Cart, Coupon, OrderItem, Category, 
+    SubCategory, CustomizedProduct, ContactMessage, NewsletterSubscription,
+    HomepageSlider, GoldSilverSection, ComponentsSection, OccasionsSection,
+    FAQSection, TestimonialsSection, Footer, AboutPage, ContactPage, Policy
+)
 from .serializers import (
     ProductSerializer, WishlistSerializer, CartSerializer, 
     OrderSerializer, CategorySerializer, SubCategorySerializer,
-    CustomizedProductSerializer, ContactMessageSerializer, NewsletterSubscriptionSerializer
+    CustomizedProductSerializer, ContactMessageSerializer, 
+    NewsletterSubscriptionSerializer, HomepageSliderSerializer,
+    GoldSilverSectionSerializer, ComponentsSectionSerializer, OccasionsSectionSerializer,
+    FAQSectionSerializer, TestimonialsSectionSerializer, FooterSerializer,
+    AboutPageSerializer, ContactPageSerializer, PolicySerializer
 )
 
 
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView # Added RetrieveAPIView
 from django.shortcuts import render
+
+class HomepageSliderView(ListAPIView):
+    queryset = HomepageSlider.objects.filter(is_active=True).order_by('display_order')
+    serializer_class = HomepageSliderSerializer
+    permission_classes = [AllowAny]
 
 class NewsletterSubscriptionView(APIView):
 
@@ -104,7 +118,7 @@ def get_products(request):
         products = products.filter(type__iexact=ptype)
     if search:
         products = products.filter(
-            Q(name__icontains=search) | 
+            Q(name__icontains=search) |
             Q(description__icontains=search) |
             Q(style_number__icontains=search)
         )
@@ -537,3 +551,68 @@ def contact_view(request):
         serializer.save()
         return Response({'status': 'success', 'message': 'Message saved successfully!'}, status=201)
     return Response(serializer.errors, status=400)
+
+class GoldSilverSectionView(ListAPIView):
+    queryset = GoldSilverSection.objects.filter(is_active=True).order_by('display_order')
+    serializer_class = GoldSilverSectionSerializer
+    permission_classes = [AllowAny]
+
+class ComponentsSectionView(ListAPIView):
+    queryset = ComponentsSection.objects.all()
+    serializer_class = ComponentsSectionSerializer
+    permission_classes = [AllowAny]
+
+class OccasionsSectionView(ListAPIView):
+    queryset = OccasionsSection.objects.all()
+    serializer_class = OccasionsSectionSerializer
+    permission_classes = [AllowAny]
+
+class FAQSectionView(ListAPIView):
+    queryset = FAQSection.objects.all()
+    serializer_class = FAQSectionSerializer
+    permission_classes = [AllowAny]
+
+class TestimonialsSectionView(ListAPIView):
+    queryset = TestimonialsSection.objects.all()
+    serializer_class = TestimonialsSectionSerializer
+    permission_classes = [AllowAny]
+
+class FooterView(RetrieveAPIView):
+    queryset = Footer.objects.all()
+    serializer_class = FooterSerializer
+    permission_classes = [AllowAny]
+
+    def get_object(self):
+        footer_instance = Footer.objects.first()
+        if not footer_instance:
+            print("DEBUG: No Footer instance found in the database.")
+        else:
+            print(f"DEBUG: Footer instance found: {footer_instance.section1_title}")
+        return footer_instance
+
+class AboutPageView(RetrieveAPIView):
+    queryset = AboutPage.objects.all()
+    serializer_class = AboutPageSerializer
+    permission_classes = [AllowAny]
+
+    def get_object(self):
+        return AboutPage.objects.first()
+
+class ContactPageView(RetrieveAPIView):
+    queryset = ContactPage.objects.all()
+    serializer_class = ContactPageSerializer
+    permission_classes = [AllowAny]
+
+    def get_object(self):
+        return ContactPage.objects.first()
+
+class PolicyListView(ListAPIView):
+    queryset = Policy.objects.all()
+    serializer_class = PolicySerializer
+    permission_classes = [AllowAny]
+
+class PolicyDetailView(RetrieveAPIView):
+    queryset = Policy.objects.all()
+    serializer_class = PolicySerializer
+    permission_classes = [AllowAny]
+    lookup_field = 'slug'

@@ -5,3 +5,6 @@ Pillow
 psycopg2
 razorpay
 python-dotenv
+django-jazzmin
+django-ckeditor
+django-nested-admin

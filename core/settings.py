@@ -47,7 +47,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
+    'nested_admin', # Added for django-nested-admin
     'api',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -146,7 +148,12 @@ RAZORPAY_KEY_ID = os.environ.get('RAZORPAY_KEY_ID', 'your_key_id')
 RAZORPAY_KEY_SECRET = os.environ.get('RAZORPAY_KEY_SECRET', 'your_key_secret')
 
 # CORS configuration for local frontend development
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [
+    "https://drishanti.com",
+    "https://www.drishanti.com",
+    "http://localhost:3000",
+]
+
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_HEADERS = [
     'content-type',
@@ -181,6 +188,19 @@ JAZZMIN_SETTINGS = {
         "api.Wishlist": "fas fa-heart",
         "api.Cart": "fas fa-cart-plus",
         "api.ContactMessage": "fas fa-envelope",
+        "api.AboutPage": "fas fa-info-circle",
+        "api.ComponentsSection": "fas fa-puzzle-piece",
+        "api.ContactPage": "fas fa-address-book",
+        "api.FAQSection": "fas fa-question-circle",
+        "api.FooterMenu": "fas fa-list",
+        "api.FooterSecondSection": "fas fa-stream",
+        "api.Footer": "fas fa-shoe-prints",
+        "api.GoldSilverSection": "fas fa-coins",
+        "api.HomepageSlider": "fas fa-images",
+        "api.NewsletterSubscription": "fas fa-envelope-open-text",
+        "api.OccasionsSection": "fas fa-calendar-alt",
+        "api.Policy": "fas fa-file-alt",
+        "api.TestimonialsSection": "fas fa-comment-alt",
     },
 
     "topmenu_links": [
@@ -190,4 +210,19 @@ JAZZMIN_SETTINGS = {
     "order_with_respect_to": [
         "api",
     ],
+}
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'height': 300,
+        'width': 800,
+        'stylesSet': [
+            {
+                'name': 'Quote',
+                'element': 'p',
+                'attributes': { 'class': 'quote' }
+            }
+        ]
+    },
 }

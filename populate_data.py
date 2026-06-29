@@ -8,7 +8,89 @@ sys.path.append(os.path.dirname(__file__))
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')
 django.setup()
 
-from api.models import Category, SubCategory, Product
+from django.core.files import File
+from api.models import Category, SubCategory, Product, HomepageSlider
+
+def create_homepage_slides():
+    """
+    Populates the HomepageSlider model with data from the frontend.
+    """
+    # Clean up existing slides to avoid duplicates on reruns
+    HomepageSlider.objects.all().delete()
+    print('Existing homepage slides cleared.')
+
+    slides_data = [
+        {
+            'title': 'Homepage Banner 1',
+            'image_path': '../drishanti-v2/public/images/banner1.webp',
+            'text': 'Rakshapotlis\nReimagined.',
+            'description': 'GOLD | SILVER | DIAMONDS',
+            'button_1_text': 'What is Rakshapotli',
+            'button_1_link': '/what-is-rakshapotli',
+            'button_2_text': 'Discover Our Story',
+            'button_2_link': '/about',
+            'display_order': 0,
+        },
+        {
+            'title': 'Homepage Banner 2',
+            'image_path': '../drishanti-v2/public/images/banner2.webp',
+            'text': 'Rakshapotlis\nReimagined.',
+            'description': 'GOLD | SILVER | DIAMONDS',
+            'button_1_text': 'What is Rakshapotli',
+            'button_1_link': '/what-is-rakshapotli',
+            'button_2_text': 'Discover Our Story',
+            'button_2_link': '/about',
+            'display_order': 1,
+        },
+        {
+            'title': 'Homepage Banner 3 (Baby)',
+            'image_path': '../drishanti-v2/public/images/baby-banner.webp',
+            'text': 'Rakshapotlis\nReimagined.',
+            'description': 'GOLD | SILVER | DIAMONDS',
+            'button_1_text': 'What is Rakshapotli',
+            'button_1_link': '/what-is-rakshapotli',
+            'button_2_text': 'Discover Our Story',
+            'button_2_link': '/about',
+            'display_order': 2,
+        }
+    ]
+
+    for index, data in enumerate(slides_data):
+        # Construct the full path to the image
+        image_path = os.path.join(os.path.dirname(__file__), data['image_path'])
+
+        if not os.path.exists(image_path):
+            print(f"Warning: Image not found at {image_path}. Skipping slide.")
+            continue
+
+        # Create the slide instance without the image first
+        slide, created = HomepageSlider.objects.get_or_create(
+            title=data['title'],
+            display_order=data['display_order'],
+            defaults={
+                'text': data['text'].replace('\\n', '\n'),
+                'text_color': '#FFFFFF',
+                'text_alignment': 'left',
+                'button_1_text': data['button_1_text'],
+                'button_1_link': data['button_1_link'],
+                'button_1_color': '#b39168',
+                'button_2_text': data['button_2_text'],
+                'button_2_link': data['button_2_link'],
+                'button_2_color': '#FFFFFF',
+                'is_active': True,
+            }
+        )
+
+        if created:
+            # Now, attach the image
+            with open(image_path, 'rb') as f:
+                # We use the name of the file for the image field
+                image_name = os.path.basename(image_path)
+                slide.slider_image.save(image_name, File(f), save=True)
+            print(f"Created slide: '{data['title']}' and uploaded image.")
+        else:
+            print(f"Slide '{data['title']}' already exists. Skipping creation.")
+
 
 def create_sample_data():
     # Create categories
@@ -56,4 +138,6 @@ def create_sample_data():
     print('Sample data created successfully!')
 
 if __name__ == '__main__':
-    create_sample_data()
+    # You can choose what to run here
+    # create_sample_data()
+    create_homepage_slides()
