@@ -1,6 +1,10 @@
 import os
 import django
+import sys
+from django.core.files import File
 
+# Setup Django
+sys.path.append(os.path.dirname(__file__))
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')
 django.setup()
 
@@ -11,11 +15,31 @@ def populate_about_page():
     AboutPage.objects.all().delete()
     print("Cleared existing About Page data.")
 
+    # Locate source images directory
+    base_dir = os.path.dirname(__file__)
+    src_images_dir = os.path.join(base_dir, 'dist', 'images')
+    if not os.path.exists(src_images_dir):
+        src_images_dir = os.path.join(base_dir, '..', 'drishanti-v2', 'public', 'images')
+
+    print(f"Using source images from: {src_images_dir}")
+
+    def get_django_file(image_name):
+        src_path = os.path.join(src_images_dir, image_name)
+        if os.path.exists(src_path):
+            return File(open(src_path, 'rb'), name=image_name)
+        print(f"Warning: Image file {image_name} not found at {src_path}")
+        return None
+
+    # Get hero image file
+    hero_file = get_django_file('about.webp')
+
     # Create the AboutPage instance
     about_page = AboutPage.objects.create(
-        hero_image='about/about.webp',
+        hero_image=hero_file,
         hero_quote='“A tradition we never questioned. A thought we could never forget.”'
     )
+    if hero_file:
+        hero_file.close()
     print("Created AboutPage instance.")
 
     # Section 1 Data
@@ -53,32 +77,41 @@ def populate_about_page():
     </div>
     """
 
-    # Create the sections
+    # Create the sections with file streams
+    file1 = get_django_file('about1.webp')
     AboutSection.objects.create(
         page=about_page,
-        image='about/about1.webp',
+        image=file1,
         content=section1_content,
         image_position='right',
         display_order=1
     )
+    if file1:
+        file1.close()
     print("Created AboutSection 1.")
 
+    file2 = get_django_file('about2.webp')
     AboutSection.objects.create(
         page=about_page,
-        image='about/about2.webp',
+        image=file2,
         content=section2_content,
         image_position='left',
         display_order=2
     )
+    if file2:
+        file2.close()
     print("Created AboutSection 2.")
 
+    file3 = get_django_file('dad.webp')
     AboutSection.objects.create(
         page=about_page,
-        image='about/dad.webp',
+        image=file3,
         content=section3_content,
         image_position='right',
         display_order=3
     )
+    if file3:
+        file3.close()
     print("Created AboutSection 3.")
 
     print("About Page population complete.")
