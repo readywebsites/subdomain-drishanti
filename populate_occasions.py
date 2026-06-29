@@ -39,7 +39,7 @@ cards_data = [
 ]
 
 # --- DEFINE FILE PATHS ---
-frontend_images_dir = os.path.abspath(os.path.join(project_dir, '..', 'drishanti-v2', 'public', 'images'))
+frontend_images_dir = os.path.join(project_dir, 'dist', 'images')
 django_media_dir = os.path.abspath(os.path.join(project_dir, 'media', 'occasions'))
 
 # --- MAIN POPULATION LOGIC ---

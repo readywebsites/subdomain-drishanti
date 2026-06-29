@@ -22,7 +22,7 @@ def create_homepage_slides():
     slides_data = [
         {
             'title': 'Homepage Banner 1',
-            'image_path': '../drishanti-v2/public/images/banner1.webp',
+            'image_path': 'banner1.webp',
             'text': 'Rakshapotlis\nReimagined.',
             'description': 'GOLD | SILVER | DIAMONDS',
             'button_1_text': 'What is Rakshapotli',
@@ -33,7 +33,7 @@ def create_homepage_slides():
         },
         {
             'title': 'Homepage Banner 2',
-            'image_path': '../drishanti-v2/public/images/banner2.webp',
+            'image_path': 'banner2.webp',
             'text': 'Rakshapotlis\nReimagined.',
             'description': 'GOLD | SILVER | DIAMONDS',
             'button_1_text': 'What is Rakshapotli',
@@ -44,7 +44,7 @@ def create_homepage_slides():
         },
         {
             'title': 'Homepage Banner 3 (Baby)',
-            'image_path': '../drishanti-v2/public/images/baby-banner.webp',
+            'image_path': 'banner3.webp',
             'text': 'Rakshapotlis\nReimagined.',
             'description': 'GOLD | SILVER | DIAMONDS',
             'button_1_text': 'What is Rakshapotli',

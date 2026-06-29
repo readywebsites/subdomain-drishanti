@@ -61,7 +61,7 @@ slides_data = [
 
 # --- DEFINE FILE PATHS ---
 # Assumes this script is in 'subdomain-drishanti' and the frontend is a sibling directory 'drishanti-v2'
-frontend_images_dir = os.path.abspath(os.path.join(project_dir, '..', 'drishanti-v2', 'public', 'images'))
+frontend_images_dir = os.path.join(project_dir, 'dist', 'images')
 django_media_dir = os.path.abspath(os.path.join(project_dir, 'media', 'homepage', 'slider'))
 
 # --- MAIN POPULATION LOGIC ---
