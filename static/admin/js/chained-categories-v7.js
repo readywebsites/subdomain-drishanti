@@ -63,6 +63,7 @@
         logDebug('Initial subcategory ID selected: ' + (initialSubcategoryId || 'None'));
 
         let categoryMap = {};
+        let isCategoriesFetched = false;
 
         // Fetch categories and subcategories
         const fetchUrl = '/api/categories/';
@@ -88,6 +89,7 @@
                     logDebug('Category: ' + category.name + ' (ID: ' + category.id + ') has ' + (category.subcategories ? category.subcategories.length : 0) + ' subcategories.');
                 });
 
+                isCategoriesFetched = true;
                 updateSubcategories(initialSubcategoryId);
             })
             .catch(error => {
@@ -100,39 +102,74 @@
                 triggerChange(subcategorySelect);
             });
 
-        // Helper to trigger change
+        // Helper to trigger change on ALL jQuery instances + native DOM + Select2 re-init
         function triggerChange(element) {
             element.dispatchEvent(new Event('change', { bubbles: true }));
             
-            const $ = window.django ? django.jQuery : (window.jQuery || window.$);
-            if ($) {
-                const $el = $(element);
+            if (window.django && window.django.jQuery) {
+                const $el = window.django.jQuery(element);
                 if ($el.data('select2')) {
-                    logDebug('Re-initializing Select2 for: ' + element.id);
+                    logDebug('Re-initializing Select2 (django.jQuery) for: ' + element.id);
                     $el.select2('destroy');
-                    $el.select2({
-                        width: 'element'
-                    });
+                    $el.select2({ width: 'element' });
                 }
-                $el.trigger('change');
+                window.django.jQuery(element).trigger('change');
+            }
+            if (window.jQuery) {
+                const $el = window.jQuery(element);
+                if ($el.data('select2') && (!window.django || $el.data('select2') !== window.django.jQuery(element).data('select2'))) {
+                    logDebug('Re-initializing Select2 (window.jQuery) for: ' + element.id);
+                    $el.select2('destroy');
+                    $el.select2({ width: 'element' });
+                }
+                window.jQuery(element).trigger('change');
             }
         }
 
         // Bind change listener on ALL jQuery instances + native DOM
         categorySelect.addEventListener('change', function () {
             logDebug('Native change event fired on new_category. Value chosen: ' + categorySelect.value);
-            updateSubcategories();
+            if (isCategoriesFetched) {
+                updateSubcategories();
+            } else {
+                logDebug('Change ignored: Categories not fetched yet.');
+            }
         });
 
-        const $ = window.django ? django.jQuery : (window.jQuery || window.$);
-        if ($) {
-            $(categorySelect).on('change', function() {
-                logDebug('jQuery change event fired on new_category. Value chosen: ' + categorySelect.value);
-                updateSubcategories();
+        if (window.django && window.django.jQuery) {
+            window.django.jQuery(categorySelect).on('change', function() {
+                logDebug('django.jQuery change event fired on new_category. Value: ' + categorySelect.value);
+                if (isCategoriesFetched) {
+                    updateSubcategories();
+                } else {
+                    logDebug('django.jQuery change ignored: Categories not fetched yet.');
+                }
             });
-            logDebug('Bound jQuery change event listener to new_category.');
-        } else {
-            logDebug('jQuery not found, relying on native change listener.');
+            logDebug('Bound django.jQuery change event listener.');
+        }
+
+        if (window.jQuery) {
+            window.jQuery(categorySelect).on('change', function() {
+                logDebug('window.jQuery change event fired on new_category. Value: ' + categorySelect.value);
+                if (isCategoriesFetched) {
+                    updateSubcategories();
+                } else {
+                    logDebug('window.jQuery change ignored: Categories not fetched yet.');
+                }
+            });
+            logDebug('Bound window.jQuery change event listener.');
+        }
+
+        if (window.$ && window.$ !== window.jQuery && (!window.django || window.$ !== window.django.jQuery)) {
+            window.$(categorySelect).on('change', function() {
+                logDebug('window.$ change event fired on new_category. Value: ' + categorySelect.value);
+                if (isCategoriesFetched) {
+                    updateSubcategories();
+                } else {
+                    logDebug('window.$ change ignored: Categories not fetched yet.');
+                }
+            });
+            logDebug('Bound window.$ change event listener.');
         }
 
         function updateSubcategories(selectedId = null) {
