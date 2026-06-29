@@ -1,3 +1,4 @@
+from django import forms
 from django.contrib import admin
 from nested_admin import NestedModelAdmin, NestedStackedInline, NestedTabularInline
 
@@ -67,9 +68,34 @@ class ProductSizeInline(admin.TabularInline):
     extra = 1
 
 
+class ProductForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if self.is_bound:
+            new_category_id = self.data.get('new_category')
+            if new_category_id:
+                try:
+                    self.fields['subcategory'].queryset = SubCategory.objects.filter(category_id=new_category_id)
+                except (ValueError, TypeError):
+                    self.fields['subcategory'].queryset = SubCategory.objects.none()
+            else:
+                self.fields['subcategory'].queryset = SubCategory.objects.none()
+        elif self.instance and self.instance.pk and self.instance.new_category:
+            self.fields['subcategory'].queryset = SubCategory.objects.filter(category=self.instance.new_category)
+        else:
+            self.fields['subcategory'].queryset = SubCategory.objects.none()
+            
+        self.fields['subcategory'].empty_label = "Select category first"
+
+
 # 🔥 PRODUCT ADMIN (IMAGE + FILTER + BESTSELLER)
 @admin.register(Product)
 class ProductAdmin(NoDeleteAdmin):
+    form = ProductForm
 
     def duplicate_products(self, request, queryset):
         for product in queryset:
@@ -159,6 +185,9 @@ class ProductAdmin(NoDeleteAdmin):
     }
 
     inlines = [ProductSizeInline]
+
+    class Media:
+        js = ('admin/js/chained-categories.js',)
 
     fieldsets = (
         ('Basic Information', {
