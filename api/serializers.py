@@ -57,16 +57,46 @@ class CustomizedProductSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class WishlistSerializer(serializers.ModelSerializer):
-    product = ProductSerializer(read_only=True)
+    product_name = serializers.CharField(source='product.name', read_only=True)
+    product_image = serializers.ImageField(source='product.image', read_only=True)
+    product_price = serializers.IntegerField(source='product.price', read_only=True)
+    product_discount_price = serializers.IntegerField(source='product.discount_price', read_only=True)
+    product_slug = serializers.CharField(source='product.slug', read_only=True)
+
     class Meta:
         model = Wishlist
-        fields = '__all__'
+        fields = [
+            'id',
+            'session_id',
+            'product',
+            'product_name',
+            'product_image',
+            'product_price',
+            'product_discount_price',
+            'product_slug',
+            'created_at'
+        ]
 
 class CartSerializer(serializers.ModelSerializer):
-    product = ProductSerializer(read_only=True)
+    product_name = serializers.CharField(source='product.name', read_only=True)
+    product_image = serializers.ImageField(source='product.image', read_only=True)
+    product_price = serializers.IntegerField(source='product.price', read_only=True)
+    product_discount_price = serializers.IntegerField(source='product.discount_price', read_only=True)
+
     class Meta:
         model = Cart
-        fields = '__all__'
+        fields = [
+            'id', 
+            'session_id', 
+            'product', 
+            'product_name', 
+            'product_image', 
+            'product_price', 
+            'product_discount_price', 
+            'quantity', 
+            'size', 
+            'created_at'
+        ]
 
 class ContactMessageSerializer(serializers.ModelSerializer):
     class Meta:
