@@ -1,36 +1,40 @@
 (function() {
-    // Create a debug console in the DOM
-    let debugDiv = document.getElementById('chained-debug-console');
-    if (!debugDiv) {
-        debugDiv = document.createElement('div');
-        debugDiv.id = 'chained-debug-console';
-        debugDiv.style.position = 'fixed';
-        debugDiv.style.top = '60px';
-        debugDiv.style.right = '20px';
-        debugDiv.style.backgroundColor = 'rgba(0, 0, 0, 0.85)';
-        debugDiv.style.color = '#00ff00';
-        debugDiv.style.padding = '15px';
-        debugDiv.style.borderRadius = '8px';
-        debugDiv.style.zIndex = '999999';
-        debugDiv.style.maxHeight = '300px';
-        debugDiv.style.width = '350px';
-        debugDiv.style.overflowY = 'auto';
-        debugDiv.style.fontSize = '12px';
-        debugDiv.style.fontFamily = 'monospace';
-        debugDiv.style.boxShadow = '0 4px 15px rgba(0,0,0,0.5)';
-        debugDiv.innerHTML = '<b>Category Dropdown Debug Console:</b><br><hr style="border-color:#555;">';
-        document.body.appendChild(debugDiv);
-    }
+    let debugDiv = null;
 
     function logDebug(msg) {
         console.log(msg);
-        const p = document.createElement('div');
-        p.style.margin = '4px 0';
-        p.style.borderBottom = '1px solid #333';
-        p.style.paddingBottom = '4px';
-        p.textContent = '[' + new Date().toLocaleTimeString() + '] ' + msg;
-        debugDiv.appendChild(p);
-        debugDiv.scrollTop = debugDiv.scrollHeight;
+        if (!debugDiv) {
+            debugDiv = document.getElementById('chained-debug-console');
+            if (!debugDiv && document.body) {
+                debugDiv = document.createElement('div');
+                debugDiv.id = 'chained-debug-console';
+                debugDiv.style.position = 'fixed';
+                debugDiv.style.top = '60px';
+                debugDiv.style.right = '20px';
+                debugDiv.style.backgroundColor = 'rgba(0, 0, 0, 0.85)';
+                debugDiv.style.color = '#00ff00';
+                debugDiv.style.padding = '15px';
+                debugDiv.style.borderRadius = '8px';
+                debugDiv.style.zIndex = '999999';
+                debugDiv.style.maxHeight = '300px';
+                debugDiv.style.width = '350px';
+                debugDiv.style.overflowY = 'auto';
+                debugDiv.style.fontSize = '12px';
+                debugDiv.style.fontFamily = 'monospace';
+                debugDiv.style.boxShadow = '0 4px 15px rgba(0,0,0,0.5)';
+                debugDiv.innerHTML = '<b>Category Dropdown Debug Console:</b><br><hr style="border-color:#555;">';
+                document.body.appendChild(debugDiv);
+            }
+        }
+        if (debugDiv) {
+            const p = document.createElement('div');
+            p.style.margin = '4px 0';
+            p.style.borderBottom = '1px solid #333';
+            p.style.paddingBottom = '4px';
+            p.textContent = '[' + new Date().toLocaleTimeString() + '] ' + msg;
+            debugDiv.appendChild(p);
+            debugDiv.scrollTop = debugDiv.scrollHeight;
+        }
     }
 
     function initChainedCategories() {
