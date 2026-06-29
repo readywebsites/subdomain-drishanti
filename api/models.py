@@ -66,7 +66,7 @@ class Product(models.Model):
     discount_price = models.IntegerField(blank=True, null=True)
     material = models.CharField(max_length=50, choices=MATERIAL_CHOICES)
     type = models.CharField(max_length=50, choices=TYPE_CHOICES)
-    category = models.CharField(max_length=50, choices=CATEGORY_CHOICES)
+    category = models.CharField(max_length=50, choices=CATEGORY_CHOICES, blank=True, null=True)
 
     image = models.ImageField(upload_to='products/', help_text="Hero Image (Main Image)")
     detail_image_1 = models.ImageField(upload_to='products/', null=True, blank=True)

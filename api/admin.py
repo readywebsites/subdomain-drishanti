@@ -172,7 +172,7 @@ class ProductAdmin(NoDeleteAdmin):
 
     list_filter = (
         'material',
-        'category',
+        'new_category',
         'is_active',
         'is_bestseller',
         'is_featured'
@@ -196,7 +196,6 @@ class ProductAdmin(NoDeleteAdmin):
                 'slug',
                 'new_category',
                 'subcategory',
-                'category',
                 'price',
                 'discount_price',
                 'stock'
