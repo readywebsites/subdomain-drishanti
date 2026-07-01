@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework.authtoken',
     'corsheaders',
     'nested_admin', # Added for django-nested-admin
     'api',
@@ -152,6 +153,13 @@ CORS_ALLOWED_ORIGINS = [
     "https://drishanti.com",
     "https://www.drishanti.com",
     "http://localhost:3000",
+    "http://localhost:5173",
+    "http://localhost:5174",
+    "http://localhost:5175",
+    "http://127.0.0.1:3000",
+    "http://127.0.0.1:5173",
+    "http://127.0.0.1:5174",
+    "http://127.0.0.1:5175",
 ]
 
 CORS_ALLOW_CREDENTIALS = True

@@ -6,7 +6,8 @@ from .views import (
     CategoryListView, SubCategoryListView, get_customized_products, contact_view, 
     NewsletterSubscriptionView, HomepageSliderView, GoldSilverSectionView,
     ComponentsSectionView, OccasionsSectionView, FAQSectionView, TestimonialsSectionView,
-    FooterView, AboutPageView, ContactPageView, PolicyListView, PolicyDetailView
+    FooterView, AboutPageView, ContactPageView, PolicyListView, PolicyDetailView,
+    send_otp, verify_otp, user_profile
 )
 
 urlpatterns = [
@@ -41,4 +42,9 @@ urlpatterns = [
     path('orders/<int:pk>/', get_order_detail),
     path('contact/', contact_view),
     path("newsletter/subscribe/",NewsletterSubscriptionView.as_view(),name="newsletter-subscribe"),
+    
+    # Auth endpoints
+    path('auth/send-otp/', send_otp),
+    path('auth/verify-otp/', verify_otp),
+    path('auth/profile/', user_profile),
 ]

@@ -10,7 +10,7 @@ from .models import (
     OccasionsSection, OccasionCard, FAQSection, FAQItem,
     TestimonialsSection, Testimonial,
     Footer, FooterSecondSection, FooterIcon, FooterMenu, FooterMenuItem,
-    AboutPage, AboutSection, ContactPage, Policy
+    AboutPage, AboutSection, ContactPage, Policy, UserProfile, OTPVerification
 )
 
 class NoDeleteAdmin(admin.ModelAdmin):
@@ -509,3 +509,7 @@ class PolicyAdmin(NoDeleteAdmin):
     list_editable = ('is_active',)
     prepopulated_fields = {'slug': ('title',)}
     search_fields = ('title', 'content')
+
+
+admin.site.register(UserProfile)
+admin.site.register(OTPVerification)

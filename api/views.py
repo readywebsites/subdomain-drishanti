@@ -1,22 +1,27 @@
 import hmac
 import hashlib
 import razorpay
+import random
 from datetime import timedelta
 from django.utils import timezone
 from django.conf import settings
 from django.core.mail import send_mail
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.authentication import TokenAuthentication
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
+from django.contrib.auth.models import User
+from rest_framework.authtoken.models import Token
 
 from django.db.models import Q
 from .models import (
     Order, Product, Wishlist, Cart, Coupon, OrderItem, Category, 
     SubCategory, CustomizedProduct, ContactMessage, NewsletterSubscription,
     HomepageSlider, GoldSilverSection, ComponentsSection, OccasionsSection,
-    FAQSection, TestimonialsSection, Footer, AboutPage, ContactPage, Policy
+    FAQSection, TestimonialsSection, Footer, AboutPage, ContactPage, Policy,
+    UserProfile, OTPVerification
 )
 from .serializers import (
     ProductSerializer, WishlistSerializer, CartSerializer, 
@@ -356,21 +361,24 @@ def create_cod_order(request):
 
 
 @api_view(['GET'])
-@authentication_classes([])
+@authentication_classes([TokenAuthentication])
 @permission_classes([AllowAny])
 def get_user_orders(request):
-    session_id = request.headers.get('X-Session-ID') or request.GET.get('session_id')
-    mobile = request.GET.get('mobile')
-    
     orders = Order.objects.none()
-    if session_id:
-        orders = Order.objects.filter(session_id=session_id)
-    elif mobile:
-        orders = Order.objects.filter(mobile=mobile)
+    if request.user and request.user.is_authenticated:
+        orders = Order.objects.filter(email=request.user.email)
+    else:
+        session_id = request.headers.get('X-Session-ID') or request.GET.get('session_id')
+        mobile = request.GET.get('mobile')
+        if session_id:
+            orders = Order.objects.filter(session_id=session_id)
+        elif mobile:
+            orders = Order.objects.filter(mobile=mobile)
         
     orders = orders.order_by('-created_at')
     serializer = OrderSerializer(orders, many=True)
     return Response(serializer.data)
+
 
 
 @api_view(['GET'])
@@ -616,3 +624,180 @@ class PolicyDetailView(RetrieveAPIView):
     serializer_class = PolicySerializer
     permission_classes = [AllowAny]
     lookup_field = 'slug'
+
+
+# 👤 AUTH & OTP VIEWS
+
+@api_view(['POST'])
+@authentication_classes([])
+@permission_classes([AllowAny])
+def send_otp(request):
+    email = request.data.get('email', '').strip().lower()
+    flow = request.data.get('flow', 'signup') # 'signup' or 'signin'
+
+    if not email:
+        return Response({'detail': 'Email is required.'}, status=400)
+
+    # If signin, check if user exists
+    if flow == 'signin':
+        if not User.objects.filter(email=email).exists():
+            return Response({'detail': 'This user does not exist, please signup'}, status=400)
+
+    # Generate 6-digit OTP
+    otp = f"{random.randint(100000, 999999)}"
+
+    # Save to OTPVerification model
+    OTPVerification.objects.create(email=email, otp=otp)
+
+    # Print to console for easy testing
+    print(f"\n======================================")
+    print(f"OTP FOR {email}: {otp} (Flow: {flow})")
+    print(f"======================================\n")
+
+    # Send email
+    subject = "Verify your email - Drishanti"
+    message = f"Namaste,\n\nYour verification code is {otp}.\n\nThis code is valid for 10 minutes.\n\nWarm Regards,\nDrishanti Team"
+    try:
+        send_mail(
+            subject,
+            message,
+            settings.DEFAULT_FROM_EMAIL if hasattr(settings, 'DEFAULT_FROM_EMAIL') else 'noreply@drishanti.com',
+            [email],
+            fail_silently=True,
+        )
+    except Exception as e:
+        print(f"Failed to send email to {email}: {e}")
+
+    return Response({'detail': 'OTP sent successfully.'})
+
+
+@api_view(['POST'])
+@authentication_classes([])
+@permission_classes([AllowAny])
+def verify_otp(request):
+    email = request.data.get('email', '').strip().lower()
+    otp = request.data.get('otp', '').strip()
+    flow = request.data.get('flow', 'signup')
+
+    if not email or not otp:
+        return Response({'detail': 'Email and OTP are required.'}, status=400)
+
+    # Find the latest OTP verification entry
+    verification = OTPVerification.objects.filter(email=email, otp=otp, is_verified=False).order_by('-created_at').first()
+
+    if not verification:
+        return Response({'detail': 'Invalid or expired OTP.'}, status=400)
+
+    # Check expiry (10 minutes)
+    if timezone.now() - verification.created_at > timedelta(minutes=10):
+        return Response({'detail': 'OTP has expired.'}, status=400)
+
+    # Mark as verified
+    verification.is_verified = True
+    verification.save()
+
+    # Get or create user
+    user = None
+    if flow == 'signup':
+        user_exists = User.objects.filter(email=email).exists()
+        if not user_exists:
+            # Username must be unique, we can use email as username
+            user = User.objects.create_user(username=email, email=email)
+            UserProfile.objects.get_or_create(user=user)
+        else:
+            user = User.objects.get(email=email)
+            UserProfile.objects.get_or_create(user=user)
+    else: # signin
+        try:
+            user = User.objects.get(email=email)
+            UserProfile.objects.get_or_create(user=user)
+        except User.DoesNotExist:
+            return Response({'detail': 'User not found. Please signup.'}, status=400)
+
+    # Generate token
+    token, _ = Token.objects.get_or_create(user=user)
+
+    # Migrate guest cart/wishlist to user account
+    guest_session_id = request.data.get('session_id')
+    if guest_session_id:
+        user_session_id = f"user_{email}"
+        # Merge cart items
+        for cart_item in Cart.objects.filter(session_id=guest_session_id):
+            user_item = Cart.objects.filter(session_id=user_session_id, product=cart_item.product, size=cart_item.size).first()
+            if user_item:
+                user_item.quantity += cart_item.quantity
+                user_item.save()
+                cart_item.delete()
+            else:
+                cart_item.session_id = user_session_id
+                cart_item.save()
+        
+        # Merge wishlist items
+        for wishlist_item in Wishlist.objects.filter(session_id=guest_session_id):
+            if Wishlist.objects.filter(session_id=user_session_id, product=wishlist_item.product).exists():
+                wishlist_item.delete()
+            else:
+                wishlist_item.session_id = user_session_id
+                wishlist_item.save()
+
+    return Response({
+        'token': token.key,
+        'email': user.email,
+        'first_name': user.first_name,
+        'last_name': user.last_name,
+    })
+
+
+@api_view(['GET', 'PUT', 'PATCH'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+def user_profile(request):
+    user = request.user
+    profile, _ = UserProfile.objects.get_or_create(user=user)
+
+    if request.method == 'GET':
+        return Response({
+            'email': user.email,
+            'first_name': user.first_name,
+            'last_name': user.last_name,
+            'mobile': profile.mobile,
+            'address': profile.address,
+            'city': profile.city,
+            'state': profile.state,
+            'pincode': profile.pincode,
+            'country': profile.country,
+        })
+
+    elif request.method in ['PUT', 'PATCH']:
+        data = request.data
+        
+        # Update User fields
+        if 'first_name' in data:
+            user.first_name = data['first_name']
+        if 'last_name' in data:
+            user.last_name = data['last_name']
+        user.save()
+
+        # Update Profile fields
+        profile.mobile = data.get('mobile', profile.mobile)
+        profile.address = data.get('address', profile.address)
+        profile.city = data.get('city', profile.city)
+        profile.state = data.get('state', profile.state)
+        profile.pincode = data.get('pincode', profile.pincode)
+        profile.country = data.get('country', profile.country)
+        profile.save()
+
+        return Response({
+            'detail': 'Profile updated successfully.',
+            'profile': {
+                'email': user.email,
+                'first_name': user.first_name,
+                'last_name': user.last_name,
+                'mobile': profile.mobile,
+                'address': profile.address,
+                'city': profile.city,
+                'state': profile.state,
+                'pincode': profile.pincode,
+                'country': profile.country,
+            }
+        })

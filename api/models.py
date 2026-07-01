@@ -559,3 +559,29 @@ class Policy(models.Model):
 
     def __str__(self):
         return self.title
+
+
+# 👤 USER PROFILE & OTP
+from django.contrib.auth.models import User
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
+    mobile = models.CharField(max_length=15, blank=True, null=True)
+    address = models.TextField(blank=True, null=True)
+    city = models.CharField(max_length=100, blank=True, null=True)
+    state = models.CharField(max_length=100, blank=True, null=True)
+    pincode = models.CharField(max_length=10, blank=True, null=True)
+    country = models.CharField(max_length=100, default='India')
+
+    def __str__(self):
+        return self.user.email
+
+
+class OTPVerification(models.Model):
+    email = models.EmailField()
+    otp = models.CharField(max_length=6)
+    created_at = models.DateTimeField(auto_now_add=True)
+    is_verified = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.email} - {self.otp} - Verified: {self.is_verified}"
