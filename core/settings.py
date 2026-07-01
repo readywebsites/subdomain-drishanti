@@ -136,6 +136,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     BASE_DIR / 'dist' / 'assets',
+    ('images', BASE_DIR / 'dist' / 'images'),
     os.path.join(BASE_DIR, 'static'),
 ]
 

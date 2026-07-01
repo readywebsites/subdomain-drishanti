@@ -5,10 +5,18 @@ from django.conf.urls.static import static
 
 from api.views import frontend
 
+from django.views.static import serve
+import os
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('api/', include('api.urls')),
+
+    # Serve static images from dist/images
+    re_path(r'^images/(?P<path>.*)$', serve, {
+        'document_root': os.path.join(settings.BASE_DIR, 'dist', 'images'),
+    }),
 
     # React frontend catch-all
     re_path(r'^(?!admin/?$|admin/|api/).*$' , frontend),
