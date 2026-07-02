@@ -187,6 +187,14 @@ class Order(models.Model):
 
     def save(self, *args, **kwargs):
         is_update = self.pk is not None
+        if not is_update:
+            from django.db.models import Max
+            max_id = Order.objects.aggregate(Max('id'))['id__max']
+            if max_id is None or max_id < 100000:
+                self.id = 100001
+            else:
+                self.id = max_id + 1
+        
         status_changed = False
         if is_update:
             try:

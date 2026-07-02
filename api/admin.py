@@ -253,8 +253,18 @@ class ProductAdmin(NoDeleteAdmin):
 # 🔥 ORDER ITEM INLINE (ORDER DETAIL MA PRODUCT SHOW)
 class OrderItemInline(admin.TabularInline):
     model = OrderItem
-    extra = 0
-    readonly_fields = ('product', 'quantity', 'price')
+    extra = 1
+    fields = ('product', 'product_image_display', 'quantity', 'price')
+    readonly_fields = ('product_image_display',)
+
+    def product_image_display(self, obj):
+        if obj.product and obj.product.image:
+            return format_html(
+                '<img src="{}" width="60" height="60" style="border-radius:5px; object-fit:cover;" />',
+                obj.product.image.url
+            )
+        return "-"
+    product_image_display.short_description = "Image"
 
 
 # 🛒 ORDER ADMIN (TARO + IMPROVED)

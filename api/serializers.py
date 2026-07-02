@@ -37,9 +37,11 @@ class CategorySerializer(serializers.ModelSerializer):
 class OrderItemSerializer(serializers.ModelSerializer):
     product = ProductSerializer(read_only=True)
     product_details = ProductSerializer(source='product', read_only=True)
+    product_name = serializers.CharField(source='product.name', read_only=True)
+    product_image = serializers.ImageField(source='product.image', read_only=True)
     class Meta:
         model = OrderItem
-        fields = ('id', 'product', 'product_details', 'quantity', 'price')
+        fields = ('id', 'product', 'product_details', 'product_name', 'product_image', 'quantity', 'price')
 
 class OrderSerializer(serializers.ModelSerializer):
     items = OrderItemSerializer(many=True, read_only=True)
