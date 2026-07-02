@@ -21,19 +21,18 @@ body, input, select, textarea, .module h2, .module th, .module td, .field-box, .
     width: 100% !important;
 }
 
-.login-page .login-logo img {
+/* Hide the duplicate dark logo on the login page */
+.login-page .login-logo img.logo-dark,
+.login-box img.logo-dark {
+    display: none !important;
+}
+
+/* Center and size the single visible light logo */
+.login-page .login-logo img.logo-light,
+.login-box img.logo-light {
     max-width: 160px !important;
     height: auto !important;
     object-fit: contain !important;
-    display: inline-block !important;
-    margin: 0 auto !important;
-}
-
-/* Fallback selector for any image in the login card */
-.login-box .login-logo img,
-.login-box img {
-    max-width: 160px !important;
-    height: auto !important;
-    margin: 0 auto !important;
     display: block !important;
+    margin: 0 auto !important;
 }
