@@ -222,8 +222,8 @@ def _send_order_email(order):
 
 # 💳 PAYMENTS & ORDERS
 @api_view(['POST'])
-@authentication_classes([])
-@permission_classes([AllowAny])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
 def create_razorpay_order(request):
     amount = int(request.data.get('amount', 0)) * 100
     if amount <= 0:
@@ -255,8 +255,8 @@ def create_razorpay_order(request):
 
 
 @api_view(['POST'])
-@authentication_classes([])
-@permission_classes([AllowAny])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
 def verify_payment(request):
     data = request.data
     
@@ -279,7 +279,7 @@ def verify_payment(request):
     order = Order.objects.create(
         session_id=data.get('session_id'),
         name=data.get('name'),
-        email=data.get('email'),
+        email=request.user.email,
         mobile=data.get('mobile'),
         address=data.get('address'),
         city=data.get('city'),
@@ -314,8 +314,8 @@ def verify_payment(request):
 
 
 @api_view(['POST'])
-@authentication_classes([])
-@permission_classes([AllowAny])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
 def create_cod_order(request):
     data = request.data
     
@@ -329,7 +329,7 @@ def create_cod_order(request):
     order = Order.objects.create(
         session_id=data.get('session_id'),
         name=data.get('name'),
-        email=data.get('email'),
+        email=request.user.email,
         mobile=data.get('mobile'),
         address=data.get('address'),
         city=data.get('city'),
