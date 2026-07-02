@@ -182,6 +182,7 @@ JAZZMIN_SETTINGS = {
     "site_logo": "../images/logo.webp",
     "login_logo": "../images/logo.webp",
     "site_icon": "../images/favicon.ico",
+    "custom_css": "css/admin_custom.css",
 
     "show_sidebar": True,
     "navigation_expanded": True,

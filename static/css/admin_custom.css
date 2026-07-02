@@ -10,3 +10,30 @@
 body, input, select, textarea, .module h2, .module th, .module td, .field-box, .readonly {
     font-family: 'NumericInter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
 }
+
+/* Center and resize the admin login page logo */
+.login-page .login-logo {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0 auto 20px auto !important;
+    text-align: center !important;
+    width: 100% !important;
+}
+
+.login-page .login-logo img {
+    max-width: 160px !important;
+    height: auto !important;
+    object-fit: contain !important;
+    display: inline-block !important;
+    margin: 0 auto !important;
+}
+
+/* Fallback selector for any image in the login card */
+.login-box .login-logo img,
+.login-box img {
+    max-width: 160px !important;
+    height: auto !important;
+    margin: 0 auto !important;
+    display: block !important;
+}

@@ -518,34 +518,53 @@ def cart_manager(request):
     if request.method == 'POST':
         product_id = request.data.get('product_id')
         quantity = int(request.data.get('quantity', 1))
-        size = request.data.get('size', 'Standard')
+        size = request.data.get('size', 'Standard') or 'Standard'
         
-        item, created = Cart.objects.get_or_create(
-            session_id=session_id, 
-            product_id=product_id, 
-            size=size,
-            defaults={'quantity': quantity}
-        )
-        if not created:
+        # Check if the product already exists in the cart for this session (ignoring size variation)
+        item = Cart.objects.filter(session_id=session_id, product_id=product_id).first()
+        if item:
             item.quantity += quantity
             item.save()
+        else:
+            item = Cart.objects.create(
+                session_id=session_id,
+                product_id=product_id,
+                size=size,
+                quantity=quantity
+            )
             
         return Response(CartSerializer(item).data)
 
     if request.method == 'PATCH':
         product_id = request.data.get('product_id')
-        size = request.data.get('size', 'Standard')
+        size = request.data.get('size')
         quantity = int(request.data.get('quantity'))
         
-        item = Cart.objects.get(session_id=session_id, product_id=product_id, size=size)
-        item.quantity = quantity
-        item.save()
-        return Response(CartSerializer(item).data)
+        # Try to find by both product_id and size, fallback to product_id if not found
+        item = None
+        if size:
+            item = Cart.objects.filter(session_id=session_id, product_id=product_id, size=size).first()
+        if not item:
+            item = Cart.objects.filter(session_id=session_id, product_id=product_id).first()
+            
+        if item:
+            item.quantity = quantity
+            item.save()
+            return Response(CartSerializer(item).data)
+        return Response({'detail': 'Cart item not found'}, status=404)
 
     if request.method == 'DELETE':
         product_id = request.data.get('product_id')
-        size = request.data.get('size', 'Standard')
-        Cart.objects.filter(session_id=session_id, product_id=product_id, size=size).delete()
+        size = request.data.get('size')
+        
+        deleted = False
+        if size:
+            deleted_count, _ = Cart.objects.filter(session_id=session_id, product_id=product_id, size=size).delete()
+            if deleted_count > 0:
+                deleted = True
+        if not deleted:
+            Cart.objects.filter(session_id=session_id, product_id=product_id).delete()
+            
         return Response({'status': 'deleted'})
 
 
@@ -723,7 +742,7 @@ def verify_otp(request):
         user_session_id = f"user_{email}"
         # Merge cart items
         for cart_item in Cart.objects.filter(session_id=guest_session_id):
-            user_item = Cart.objects.filter(session_id=user_session_id, product=cart_item.product, size=cart_item.size).first()
+            user_item = Cart.objects.filter(session_id=user_session_id, product=cart_item.product).first()
             if user_item:
                 user_item.quantity += cart_item.quantity
                 user_item.save()
