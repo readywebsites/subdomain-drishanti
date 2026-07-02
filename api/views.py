@@ -327,8 +327,12 @@ def verify_payment(request):
         except Coupon.DoesNotExist:
             pass
 
+    session_id = data.get('session_id')
+    if request.user and request.user.is_authenticated:
+        session_id = f"user_{request.user.email}"
+
     order = Order.objects.create(
-        session_id=data.get('session_id'),
+        session_id=session_id,
         name=data.get('name'),
         email=request.user.email,
         mobile=data.get('mobile'),
@@ -355,9 +359,9 @@ def verify_payment(request):
         delivery_estimate=_get_delivery_estimate(data.get('shipping_method', 'Standard'))
     )
 
-    if data.get('session_id'):
-        _create_order_items(order, data.get('session_id'))
-        Cart.objects.filter(session_id=data.get('session_id')).delete()
+    if session_id:
+        _create_order_items(order, session_id)
+        Cart.objects.filter(session_id=session_id).delete()
 
     _send_order_email(order)
 
@@ -377,8 +381,12 @@ def create_cod_order(request):
         except Coupon.DoesNotExist:
             pass
 
+    session_id = data.get('session_id')
+    if request.user and request.user.is_authenticated:
+        session_id = f"user_{request.user.email}"
+
     order = Order.objects.create(
-        session_id=data.get('session_id'),
+        session_id=session_id,
         name=data.get('name'),
         email=request.user.email,
         mobile=data.get('mobile'),
@@ -402,9 +410,9 @@ def create_cod_order(request):
         delivery_estimate=_get_delivery_estimate(data.get('shipping_method', 'Standard'))
     )
 
-    if data.get('session_id'):
-        _create_order_items(order, data.get('session_id'))
-        Cart.objects.filter(session_id=data.get('session_id')).delete()
+    if session_id:
+        _create_order_items(order, session_id)
+        Cart.objects.filter(session_id=session_id).delete()
 
     _send_order_email(order)
 
