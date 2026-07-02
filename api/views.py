@@ -203,7 +203,58 @@ def _get_delivery_estimate(shipping_method):
         return timezone.now().date() + timedelta(days=2)
     return timezone.now().date() + timedelta(days=5)
 
+def _send_admin_notification_email(order):
+    admin_email = "sethvinit@hotmail.com"
+    subject = f"New Order Received - #{order.id} - Drishanti"
+    
+    # Format items
+    try:
+        items = order.items.all()
+        items_str = "\n".join([f"- {item.product.name} (Qty: {item.quantity}) - Rs. {item.price * item.quantity}" for item in items])
+    except Exception:
+        items_str = "Error loading items"
+        
+    message = (
+        f"Namaste,\n\n"
+        f"A new order has been placed on Drishanti.\n\n"
+        f"Order Details:\n"
+        f"--------------\n"
+        f"Order ID: #{order.id}\n"
+        f"Total Amount: Rs. {order.total}\n"
+        f"Payment Method: {order.payment_method}\n"
+        f"Date: {order.created_at.strftime('%Y-%m-%d %H:%M:%S') if order.created_at else 'N/A'}\n\n"
+        f"Customer Details:\n"
+        f"-----------------\n"
+        f"Name: {order.name}\n"
+        f"Email: {order.email or 'N/A'}\n"
+        f"Mobile: {order.mobile}\n\n"
+        f"Shipping Address:\n"
+        f"-----------------\n"
+        f"{order.address}, {order.city}, {order.state or ''} - {order.pincode}\n\n"
+        f"Items Ordered:\n"
+        f"--------------\n"
+        f"{items_str}\n\n"
+        f"Warm Regards,\n"
+        f"Drishanti System"
+    )
+    
+    try:
+        from_email = settings.DEFAULT_FROM_EMAIL if hasattr(settings, 'DEFAULT_FROM_EMAIL') else 'noreply@drishanti.com'
+        send_mail(
+            subject,
+            message,
+            from_email,
+            [admin_email],
+            fail_silently=True,
+        )
+    except Exception as e:
+        pass
+
 def _send_order_email(order):
+    # Send notification to admin
+    _send_admin_notification_email(order)
+    
+    # Send confirmation to user
     if not order.email:
         return
     subject = f"Order Confirmation - {order.id}"
