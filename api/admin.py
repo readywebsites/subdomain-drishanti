@@ -261,7 +261,9 @@ class OrderItemInline(admin.TabularInline):
 @admin.register(Order)
 class OrderAdmin(NoDeleteAdmin):
     def cancel_orders(self, request, queryset):
-        queryset.update(status='Cancelled')
+        for order in queryset:
+            order.status = 'Cancelled'
+            order.save()
     cancel_orders.short_description = "Cancel selected orders"
 
     list_display = (

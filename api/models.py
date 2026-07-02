@@ -159,6 +159,53 @@ class Order(models.Model):
     is_paid = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    def send_status_update_email(self):
+        from django.core.mail import send_mail
+        from django.conf import settings
+        
+        if not self.email:
+            return
+            
+        subject = f"Order #{self.id} Status Updated - Drishanti"
+        message = f"Namaste {self.name},\n\nYour order #{self.id} status has been updated to: {self.status}."
+        
+        if self.courier_partner or self.tracking_number:
+            partner = self.courier_partner if self.courier_partner else "N/A"
+            tracking = self.tracking_number if self.tracking_number else "N/A"
+            message += f"\n\nyou can track your product at {partner} with traking id {tracking}."
+            
+        message += "\n\nWarm Regards,\nDrishanti Team"
+        
+        from_email = getattr(settings, 'DEFAULT_FROM_EMAIL', 'noreply@drishanti.com')
+        send_mail(
+            subject,
+            message,
+            from_email,
+            [self.email],
+            fail_silently=False,
+        )
+
+    def save(self, *args, **kwargs):
+        is_update = self.pk is not None
+        status_changed = False
+        if is_update:
+            try:
+                old_instance = Order.objects.get(pk=self.pk)
+                if old_instance.status != self.status:
+                    status_changed = True
+            except Order.DoesNotExist:
+                pass
+        
+        super().save(*args, **kwargs)
+        
+        if is_update and status_changed:
+            try:
+                self.send_status_update_email()
+            except Exception as e:
+                import logging
+                logger = logging.getLogger(__name__)
+                logger.error(f"Failed to send order status update email for order {self.id}: {e}")
+
     def __str__(self):
         return f"Order {self.id} — {self.name}"
 
