@@ -13,6 +13,11 @@ urlpatterns = [
 
     path('api/', include('api.urls')),
 
+    # Serve static assets from dist/assets
+    re_path(r'^assets/(?P<path>.*)$', serve, {
+        'document_root': os.path.join(settings.BASE_DIR, 'dist', 'assets'),
+    }),
+
     # Serve static images from dist/images
     re_path(r'^images/(?P<path>.*)$', serve, {
         'document_root': os.path.join(settings.BASE_DIR, 'dist', 'images'),
