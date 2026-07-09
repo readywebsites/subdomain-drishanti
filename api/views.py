@@ -80,7 +80,7 @@ def get_customized_products(request):
 
 # 📂 CATEGORY VIEWS
 class CategoryListView(ListAPIView):
-    queryset = Category.objects.prefetch_related('subcategories')
+    queryset = Category.objects.filter(is_active=True).prefetch_related('subcategories')
     serializer_class = CategorySerializer
     permission_classes = [AllowAny]
 
