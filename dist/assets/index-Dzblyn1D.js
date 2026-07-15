@@ -288,6 +288,7 @@ Error generating stack: `+o.message+`
 
         /* TIER 5: LED (1536px+) */
         @media (min-width: 1536px) {
+          .components-container { padding-top: 4.5rem !important; }
           .components-header { margin-bottom: 2.5rem !important; }
           .components-grid { 
             grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
